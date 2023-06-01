@@ -1,0 +1,152 @@
+/* Overlay */
+.overlay {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateX(-100vw);
+}
+
+.overlaySlideIn {
+  transition: all 0.4s ease-in-out;
+  transform: translateX(0);
+}
+
+.overlaySlideOut {
+  transition: all 0.8s ease-in-out;
+  transform: translateX(-100vw);
+}
+
+/* Nav Menu Items */
+.navigation {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  list-style: none;
+}
+
+.navigation li {
+  height: 20%;
+  overflow: hidden;
+}
+
+.navigation li .links {
+  position: relative;
+  top: 45%;
+  color: var(--primaryColor);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.navigation li .links:hover {
+  transform: scale(1.2);
+}
+
+.navigation li .links::before {
+  content: "";
+  width: 25vw;
+  height: 3px;
+  background-color: var(--primaryColor);
+  position: absolute;
+  top: 47.5%;
+  left: 0;
+  opacity: 0;
+}
+
+.navigation li .links:hover::before {
+  opacity: 1;
+}
+
+.navigation li:nth-of-type(1) {
+  background-color: var(--navColor1);
+}
+
+.navigation li:nth-of-type(2) {
+  background-color: var(--navColor2);
+}
+
+.navigation li:nth-of-type(3) {
+  background-color: var(--navColor3);
+}
+
+.navigation li:nth-of-type(4) {
+  background-color: var(--navColor4);
+}
+
+.navigation li:nth-of-type(5) {
+  background-color: var(--navColor5);
+}
+
+/* Slide In Animation with delay for each nav item */
+.overlaySlideIn .slide1 {
+  animation: slide-in 0.4s linear 0.2s both;
+}
+
+.overlaySlideIn .slide2 {
+  animation: slide-in 0.4s linear 0.4s both;
+}
+
+.overlaySlideIn .slide3 {
+  animation: slide-in 0.4s linear 0.6s both;
+}
+
+.overlaySlideIn .slide4 {
+  animation: slide-in 0.4s linear 0.8s both;
+}
+
+.overlaySlideIn .slide5 {
+  animation: slide-in 0.4s linear 1s both;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Slide Out Animation with delay for each nav item */
+.overlaySlideOut .slide1 {
+  animation: slide-out 0.3s linear 0.5s both;
+}
+
+.overlaySlideOut .slide2 {
+  animation: slide-out 0.3s linear 0.4s both;
+}
+
+.overlaySlideOut .slide3 {
+  animation: slide-out 0.3s linear 0.3s both;
+}
+
+.overlaySlideOut .slide4 {
+  animation: slide-out 0.3s linear 0.2s both;
+}
+
+.overlaySlideOut .slide5 {
+  animation: slide-out 0.3s linear 0.1s both;
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
