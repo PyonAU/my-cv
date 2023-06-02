@@ -14,7 +14,6 @@ const AboutPage = () => {
           }
         `}
       </style>
-      ;
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>ABOUT ME</h1>
       </div>
