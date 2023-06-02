@@ -14,7 +14,6 @@ const SkillsPage = () => {
           }
         `}
       </style>
-      ;
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>MY SKILLS</h1>
       </div>
