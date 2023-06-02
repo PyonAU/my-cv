@@ -5,17 +5,7 @@ import Menu from './Menu';
 import styles from './MenuBar.module.css';
 
 const MenuBar = () => {
-  // const [slide, setSlide] = useState('Out');
   const [isSlide, setIsSlide] = useState(false);
-
-  // function handleMenuClick() {
-  //   setSlide((preValue) => {
-  //     if (preValue === 'out') {
-  //       return 'in';
-  //     }
-  //     return 'out';
-  //   });
-  // }
 
   const handleMenuClick = () => {
     setIsSlide((preValue) => !preValue);
