@@ -1,0 +1,27 @@
+.titleContainer {
+  text-align: center;
+}
+
+.title {
+  color: var(--primaryColor);
+  font-size: 3rem;
+}
+
+.listContainer {
+  width: 60%;
+  padding: 10px;
+  border: 5px solid var(--primaryColor);
+  background-color: var(--primaryColor);
+  border-radius: 40px;
+  margin: auto;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.lists {
+  color: var(--navColor3);
+}
+
+.list {
+  margin: 15px 0;
+}
