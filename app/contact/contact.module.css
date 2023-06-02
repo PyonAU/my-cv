@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+}
+
+.title {
+  color: var(--primaryColor);
+  font-size: 3rem;
+}
+
+.email {
+  color: var(--primaryColor);
+  font-size: 2rem;
+}
+
+.icons {
+  margin: 5px;
+}
+
+.loading {
+  color: var(--primaryColor);
+}
