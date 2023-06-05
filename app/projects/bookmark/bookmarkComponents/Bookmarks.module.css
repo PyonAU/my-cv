@@ -1,9 +1,6 @@
 /* Bookmarks */
 .container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 300px;
+  display: inline-block;
 }
 
 .item {
@@ -12,6 +9,7 @@
   border-radius: 5px;
   padding: 20px;
   margin: 10px 10px 10px 50px;
+  width: auto;
 }
 
 .item:hover {

@@ -5,6 +5,7 @@
 .title {
   color: var(--primaryColor);
   font-size: 3rem;
+  margin-top: 100px;
 }
 
 .email {
