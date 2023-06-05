@@ -1,5 +1,3 @@
-import Link from 'next/link';
-import Image from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './Bookmarks.module.css';
