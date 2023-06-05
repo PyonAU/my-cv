@@ -5,7 +5,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import styles from './Bookmarks.module.css';
 
 const Bookmarks = ({ inputData, handleDelete }) => {
-  console.log(inputData);
 
   const mappedData = inputData.map((card) => {
     return (

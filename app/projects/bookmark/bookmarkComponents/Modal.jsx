@@ -67,6 +67,10 @@ const Modal = () => {
     });
   };
 
+  const handleDelete = (url) => {
+    setInputData(inputData.filter((data) => data.url !== url));
+  };
+
   return (
     <div>
       {/* Open Modal */}
@@ -74,7 +78,7 @@ const Modal = () => {
         Add Bookmark
       </h1>
 
-      <Bookmarks inputData={inputData} />
+      <Bookmarks inputData={inputData} handleDelete={handleDelete} />
 
       {/* Modal */}
       <div className={openModal}>
