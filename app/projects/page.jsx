@@ -19,11 +19,14 @@ const ProjectsPage = () => {
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>My Projects</h1>
       </div>
-
       <div className={styles.outerContainer}>
         {projectCards.map((card) => {
           return (
-            <div className={styles.imageContainer} key={card.alt}>
+            <Link
+              className={styles.cardContainer}
+              key={card.alt}
+              href={card.route}
+            >
               <Image
                 src={card.src}
                 width={300}
@@ -32,11 +35,10 @@ const ProjectsPage = () => {
                 className={styles.image}
               />
               <h2 className={styles.appTitle}>{card.title}</h2>
-            </div>
+            </Link>
           );
         })}
       </div>
-
     </>
   );
 };

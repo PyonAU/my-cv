@@ -12,7 +12,7 @@
   flex-flow: row wrap;
 }
 
-.imageContainer {
+.cardContainer {
   width: 300px;
   border: 0 solid var(--primaryColor);
   background-color: var(--primaryColor);
@@ -21,6 +21,7 @@
   text-align: center;
   border-radius: 20px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .image {
