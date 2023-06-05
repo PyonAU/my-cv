@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.addBookmark {
+  padding: 20px;
+  background-color: rgba(33, 4, 66, 0.8);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  width: 275px;
+  margin: 20px auto 10px;
+  user-select: none;
+}
+
+.addBookmark:hover {
+  background: rgba(56, 18, 99, 0.8);
+}
+
+/* Modal */
+.modalContainer {
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.showModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  max-width: 95%;
+  width: 500px;
+  animation: modalopen 1s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.closeIcon {
+  float: right;
+  color: white;
+  font-size: 24px;
+  position: relative;
+  top: 13px;
+  right: 13px;
+  cursor: pointer;
+}
+
+.modalHeader {
+  background: var(--bookmarkPrimaryColor);
+  color: white;
+  padding: 15px;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.modalContent {
+  padding: 20px;
+  background: whitesmoke;
+}
+
+/* Form */
+.formGroup {
+  height: 55px;
+}
+
+.formInput {
+  width: 97%;
+  padding: 5px;
+  border: 2px solid var(--bookmarkPrimaryColor);
+  border-radius: 5px;
+  display: block;
+  outline: none;
+}
+
+.formLabel {
+  color: var(--bookmarkPrimaryColor);
+  display: block;
+}
+
+.saveButton {
+  cursor: pointer;
+  color: white;
+  background: var(--bookmarkPrimaryColor);
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.saveButton:hover {
+  filter: brightness(110%);
+}
+
+.saveButton:focus {
+  outline: none;
+}
