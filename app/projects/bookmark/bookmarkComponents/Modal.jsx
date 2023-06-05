@@ -71,8 +71,8 @@ const Modal = () => {
     });
   };
 
-  const handleDelete = (url) => {
-    setInputData(inputData.filter((data) => data.url !== url));
+  const handleDelete = (index) => {
+    setInputData(inputData.filter((data, i) => i !== index));
   };
 
   useEffect(() => {

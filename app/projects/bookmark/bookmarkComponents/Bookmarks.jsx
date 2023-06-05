@@ -6,14 +6,14 @@ import styles from './Bookmarks.module.css';
 
 const Bookmarks = ({ inputData, handleDelete }) => {
 
-  const mappedData = inputData.map((card) => {
+  const mappedData = inputData.map((card, i) => {
     return (
-      <div className={styles.container} key={card.name}>
+      <div className={styles.container} key={`card${i}`}>
         <div className={styles.item}>
           <FontAwesomeIcon
             icon={faXmark}
             className={styles.deleteBookmark}
-            onClick={() => handleDelete(card.url)}
+            onClick={() => handleDelete(i)}
           />
           <div className={styles.name}>
             <img
