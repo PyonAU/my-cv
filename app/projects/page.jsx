@@ -8,7 +8,7 @@ import styles from './project.module.css';
 const ProjectsPage = () => {
   return (
     <>
-      <style global jsx>
+      <style jsx global>
         {`
           html,
           body {

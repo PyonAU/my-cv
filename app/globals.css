@@ -9,11 +9,6 @@
   --navColor5: #a1c462;
   /* Bookmark App */
   --bookmarkPrimaryColor: #da98df;
-  /* Math Sprint Game */
-  --baseColor: dodgerblue;
-  --selectColor: dodgerblue;
-  --success: rgb(15, 158, 2);
-  --danger: rgb(214, 23, 23);
 }
 
 html {
