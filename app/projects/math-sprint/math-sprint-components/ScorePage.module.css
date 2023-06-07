@@ -62,3 +62,23 @@
 .playAgain:active {
   transform: scale(0.99);
 }
+
+/* Media Query: Laptop */
+@media screen and (max-width: 1800px) {
+ .scoreContainer {
+  height: 390px;
+ }
+
+ .baseTime {
+  margin-top: 30px;
+ }
+
+ .finalTime {
+  font-size: 85px;
+ }
+
+ .scoreFooter {
+  top: 3px;
+ }
+
+}

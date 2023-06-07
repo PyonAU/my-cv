@@ -19,7 +19,7 @@ function GamePage({ isPlaying, equationArray, handleClickAnswer, valueY, isFinis
       {/* Item Container */}
       <div className={styles.itemContainer} ref={itemRef}>
         {/* Spacer */}
-        <div className={styles.height240}></div>
+        <div className={styles.topSpace}></div>
         {/* Selected Item */}
         <div className={styles.selectedItem}></div>
         {equationArray.map((item, i) => {
@@ -28,7 +28,7 @@ function GamePage({ isPlaying, equationArray, handleClickAnswer, valueY, isFinis
           </div>
         })}
         {/* Set Blank Space Below */}
-        <div className={styles.height500}></div>
+        <div className={styles.bottomSpace}></div>
       </div>
 
       {/* Right/Wrong Buttons */}
