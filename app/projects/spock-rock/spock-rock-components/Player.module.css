@@ -1,0 +1,34 @@
+.playerContainer {
+  margin: 50px;
+}
+
+.marginBottom {
+  margin-bottom: 20px;
+  color: black;
+}
+
+.playerIcon {
+  font-size: 50px;
+  margin-right: 40px;
+  user-select: none;
+}
+
+.selectable {
+  cursor: pointer;
+}
+
+.purple {
+  color: rgb(147, 7, 228);
+}
+
+.red {
+  color: rgb(235, 43, 52);
+}
+
+.playerContainer .playerIcon:last-of-type {
+  margin-right: 0;
+}
+
+.selected {
+  color: black !important;
+}
