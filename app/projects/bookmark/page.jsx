@@ -5,9 +5,14 @@ import Modal from './bookmarkComponents/Modal';
 const BookmarkApp = () => {
   return (
     <>
-      <style global jsx>
+      <style jsx global>
         {`
-          html,
+        :root {
+          --bookmarkPrimaryColor: #da98df;
+        }
+        
+          html
+
           body {
             min-height: 100vh;
             background-color: #da98df;

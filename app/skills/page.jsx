@@ -6,7 +6,7 @@ import styles from './skills.module.css';
 const SkillsPage = () => {
   return (
     <>
-      <style global jsx>
+      <style jsx global>
         {`
           html,
           body {

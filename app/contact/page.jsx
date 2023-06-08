@@ -8,7 +8,7 @@ import React from 'react';
 const ContactPage = () => {
   return (
     <>
-      <style global jsx>
+      <style jsx global>
         {`
           html,
           body {

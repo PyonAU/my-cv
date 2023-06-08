@@ -6,7 +6,7 @@ import styles from './about.module.css';
 const AboutPage = () => {
   return (
     <>
-      <style global jsx>
+      <style jsx global>
         {`
           html,
           body {
