@@ -4,12 +4,12 @@
 }
 
 /* Game Page -------------------------- */
-.height240 {
+.topSpace {
   height: 240px;
   width: 100%;
 }
 
-.height500 {
+.bottomSpace {
   height: 500px;
   width: 100%;
 }
@@ -87,4 +87,45 @@
 
 .right {
   background: var(--success);
+}
+
+/* Media Query: Laptop */
+@media screen and (max-width: 1800px) {
+  .card {
+    height: 440px;
+  }
+
+  .topSpace {
+    height: 157px;
+  }
+
+  .itemContainer {
+    height: 385px;
+  }
+
+  .selectedItem {
+    top: 275px;
+    width: 470px;
+  }
+
+  .itemFooter {
+    height: 75px;
+  }
+
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 500px) {
+  .selectedItem {
+    top: 270px;
+  }
+
+  .itemContainer {
+    height: 506px;
+  }
+
+  .topSpace {
+    height: 185px;
+  }
+
 }

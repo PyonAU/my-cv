@@ -15,3 +15,18 @@
   color:black;
   font-family: Oxanium, sans-serif;
 }
+
+/* Media Query: Laptop */
+@media screen and (max-width: 1800px) {
+  .countdown {
+    margin-top: 30%;
+  }
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 500px) {
+  .countdown {
+    margin-top: 60%;
+  }
+
+}

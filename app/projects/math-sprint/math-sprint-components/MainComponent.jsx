@@ -26,14 +26,14 @@ const MainComponent = () => {
   const [time, setTime] = useState({
     timePlayed: 0,
     penaltyTime: 0,
-    finalTime: 0
+    finalTime: 0,
   });
   const [bestScoreArray, setBestScoreArray] = useState([
-      { questions: 10, bestScore: 0 },
-      { questions: 25, bestScore: 0 },
-      { questions: 50, bestScore: 0 },
-      { questions: 99, bestScore: 0 }
-  ]);;
+    { questions: 10, bestScore: 0 },
+    { questions: 25, bestScore: 0 },
+    { questions: 50, bestScore: 0 },
+    { questions: 99, bestScore: 0 },
+  ]);
 
   // Destructuring
   const { count, isPlaying, isFinished } = countdownTimer;
@@ -70,7 +70,7 @@ const MainComponent = () => {
 
   const handleClickAnswer = (playerGuess) => {
     // Scroll 80px
-    setValueY((value) => value += 80);
+    setValueY((value) => (value += 80));
 
     // Add player guess to array
     // console.log('playerGuessArray:', JSON.stringify(playerGuessArray));
@@ -83,12 +83,14 @@ const MainComponent = () => {
       const currentDateFinish = new Date();
       timestampFinish = Math.round(currentDateFinish.getTime() / 1000);
       console.log('timestampFinish:', timestampFinish);
-      setTime({ ...time, timePlayed: timestampFinish - timestampStart })
+      setTime({ ...time, timePlayed: timestampFinish - timestampStart });
     }
   };
 
   useEffect(() => {
-    const wrongAnswers = equationArray.filter((equation, index) => equation.evaluated !== playerGuessArray[index]);
+    const wrongAnswers = equationArray.filter(
+      (equation, index) => equation.evaluated !== playerGuessArray[index]
+    );
     setTime({ ...time, penaltyTime: wrongAnswers.length * 0.5 });
   }, [isFinished]);
 
@@ -99,19 +101,20 @@ const MainComponent = () => {
   useEffect(() => {
     if (localStorage.getItem('bestScores')) {
       setBestScoreArray(JSON.parse(localStorage.bestScores));
-    } else { 
+    } else {
       localStorage.setItem('bestScores', JSON.stringify(bestScoreArray));
     }
   }, []);
- 
+
   useEffect(() => {
     if (bestScoreArray) {
       setBestScoreArray((prev) =>
         prev.map((score) => {
-          if (equationArray.length === score.questions
-             && (score.bestScore === 0 || score.bestScore > finalTime))
-          {
-            return {...score, bestScore: finalTime};
+          if (
+            equationArray.length === score.questions &&
+            (score.bestScore === 0 || score.bestScore > finalTime)
+          ) {
+            return { ...score, bestScore: finalTime };
           }
 
           return score;
@@ -121,23 +124,24 @@ const MainComponent = () => {
   }, [finalTime]);
 
   useEffect(() => {
-    localStorage.setItem('bestScores', JSON.stringify(bestScoreArray)); 
+    localStorage.setItem('bestScores', JSON.stringify(bestScoreArray));
   }, [bestScoreArray]);
 
   const playAgain = () => {
     setQuestionCount(0);
     setIsStarted(false);
-    setCountdownTimer({ 
+    setCountdownTimer({
       count: 3,
-      isPlaying: false, 
-      isFinished: false });
+      isPlaying: false,
+      isFinished: false,
+    });
     setEquationArray([]);
     setValueY(0);
     setPlayerGuessArray([]);
     setTime({
       timePlayed: 0,
       penaltyTime: 0,
-      finalTime: 0
+      finalTime: 0,
     });
   };
 
@@ -149,20 +153,21 @@ const MainComponent = () => {
         questionCount={questionCount}
         startRound={startRound}
         isStarted={isStarted}
+        bestScoreArray={bestScoreArray}
       />
-      <CountdownPage 
-      isStarted={isStarted}
-      text={count <= 0 ? 'GO!' : count}
-      isPlaying={isPlaying}
+      <CountdownPage
+        isStarted={isStarted}
+        text={count <= 0 ? 'GO!' : count}
+        isPlaying={isPlaying}
       />
-      <GamePage 
-      isPlaying={isPlaying}
-      equationArray={equationArray}
-      handleClickAnswer={handleClickAnswer}
-      valueY={valueY}
-      isFinished={isFinished}
+      <GamePage
+        isPlaying={isPlaying}
+        equationArray={equationArray}
+        handleClickAnswer={handleClickAnswer}
+        valueY={valueY}
+        isFinished={isFinished}
       />
-      <ScorePage 
+      <ScorePage
         isFinished={isFinished}
         timePlayed={timePlayed}
         penaltyTime={penaltyTime}

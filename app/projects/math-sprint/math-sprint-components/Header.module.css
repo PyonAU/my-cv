@@ -12,3 +12,19 @@
   justify-content: center;
   align-items: center;
 }
+
+/* Media Query: Laptop */
+@media screen and (max-width: 1800px) {
+  .header {
+    font-size: 20px;
+    height: 80px;
+  }
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 500px) {
+  .header {
+    font-size: 12px;
+  }
+
+}

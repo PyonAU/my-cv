@@ -8,6 +8,7 @@ const SplashPage = ({
   questionCount,
   startRound,
   isStarted,
+  bestScoreArray
 }) => {
   const selectedContainer = cx(styles.radioContainer, {
     [styles.selectedLabel]: true,
@@ -40,7 +41,13 @@ const SplashPage = ({
                 />
                 <span className={styles.bestScore}>
                   <span>Best Score</span>
-                  <span className={styles.bestScoreValue}></span>
+                  {bestScoreArray.map((score,i) => {
+                    if (score.questions === number) {
+                     return <span className={styles.bestScoreValue} key={`questions${i}`}>
+                        {score.bestScore}
+                      </span>;
+                    }
+                  })}
                 </span>
               </div>
             </div>
