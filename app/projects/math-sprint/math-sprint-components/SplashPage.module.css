@@ -125,3 +125,25 @@
     font-size: 22px;
   }
 }
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 500px) {
+  .selectionContainer {
+    top: 40px;
+  }
+
+  .radioContainer {
+    width: 93%;
+    margin: 30px 10px 10px 10px;
+  }
+
+  .bestScore {
+    font-size: 1rem;
+    left: 245px;
+  }
+
+  .selectionFooter {
+    top: 123px;
+  }
+
+}

@@ -22,3 +22,11 @@
     margin-top: 30%;
   }
 }
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 500px) {
+  .countdown {
+    margin-top: 60%;
+  }
+
+}

@@ -113,3 +113,19 @@
   }
 
 }
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 500px) {
+  .selectedItem {
+    top: 270px;
+  }
+
+  .itemContainer {
+    height: 506px;
+  }
+
+  .topSpace {
+    height: 185px;
+  }
+
+}

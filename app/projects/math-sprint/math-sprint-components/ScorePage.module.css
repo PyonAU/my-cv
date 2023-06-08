@@ -82,3 +82,18 @@
  }
 
 }
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 500px) {
+  .scoreContainer {
+    height: 455px;
+   }
+
+ .scoreFooter {
+  top: 45px;
+ }
+
+ .baseTime {
+  margin-top: 85px;
+ }
+}
