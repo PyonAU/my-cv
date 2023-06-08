@@ -53,12 +53,13 @@
   max-width: fit-content;
 }
 
-.bestScore span {
-  margin: 0;
+.bestScore .bestScoreValue {
+  margin: 5px;
 }
 
-.bestScore span:last-child {
-  font-size: 24px;
+.bestScore .bestScoreValue:last-child {
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .selectionFooter {
