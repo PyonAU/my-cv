@@ -1,0 +1,7 @@
+.gameContainer {
+  width: 539px;
+  height: 600px;
+  background:rgb(255, 242, 243);
+  border-radius: 5px;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
+}
