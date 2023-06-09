@@ -11,9 +11,22 @@ const SpockRockGame = () => {
     playerScore: 0,
     computerScore: 0,
   });
+  const [isSelected, setIsSelected] = useState({
+    playerChoice: '',
+    computerChoice: '',
+  });
 
   // Destructuring
   const { playerScore, computerScore } = score;
+  const { playerChoice, computerChoice } = isSelected;
+
+  const handlePlayerClick = (event) => {
+    event.preventDefault();
+    const choice = event.target.textContent;
+    console.log('choice:', choice);
+
+    setIsSelected({ ...isSelected, playerChoice: choice });
+  };
 
   return (
     <>
@@ -34,8 +47,13 @@ const SpockRockGame = () => {
       </style>
       <div className={styles.gameContainer}>
         <Header />
-        <Player name="You" score={playerScore} />
-        <Player name="Computer" score={playerScore} />
+        <Player
+          name="You"
+          score={playerScore}
+          choice={playerChoice}
+          handlePlayerClick={handlePlayerClick}
+        />
+        <Player name="Computer" score={computerScore} choice={computerChoice} />
       </div>
     </>
   );

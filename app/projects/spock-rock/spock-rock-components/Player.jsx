@@ -8,7 +8,7 @@ import { faHandSpock } from '@fortawesome/free-regular-svg-icons';
 import styles from './Player.module.css';
 import cx from 'classnames';
 
-function Player({ name, score }) {
+function Player({ name, score, handlePlayerClick, choice }) {
   const playerColor = name === 'Computer' ? styles.red : styles.purple;
   const playerSelected = name === 'Computer' ? '' : styles.selectable;
 
@@ -22,24 +22,33 @@ function Player({ name, score }) {
       </h2>
       <FontAwesomeIcon
         icon={faHandBackFist}
-        className={playerIcon}
+        className={`${playerIcon} ${choice === "Rock" ? styles.selected : ''}`}
         title="Rock"
+        onClick={handlePlayerClick}
       />
-      <FontAwesomeIcon icon={faHand} className={playerIcon} title="Paper" />
+      <FontAwesomeIcon
+        icon={faHand}
+        className={playerIcon}
+        title="Paper"
+        onClick={handlePlayerClick}
+      />
       <FontAwesomeIcon
         icon={faHandScissors}
         className={playerIcon}
         title="Scissors"
+        onClick={handlePlayerClick}
       />
       <FontAwesomeIcon
         icon={faHandLizard}
         className={playerIcon}
         title="Lizard"
+        onClick={handlePlayerClick}
       />
       <FontAwesomeIcon
         icon={faHandSpock}
         className={playerIcon}
         title="Spock"
+        onClick={handlePlayerClick}
       />
     </div>
   );
