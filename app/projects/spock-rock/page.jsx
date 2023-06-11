@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Header from './spock-rock-components/Header';
 import Player from './spock-rock-components/Player';
 import Result from './spock-rock-components/Result';
+import { startConfetti, stopConfetti, removeConfetti } from '../lib/spock-rock-game/confetti';
 import styles from './SpockRockGame.module.css';
 
 const gameLogic = {
@@ -31,6 +32,9 @@ const SpockRockGame = () => {
   const { playerChoice, computerChoice } = isSelected;
 
   const handlePlayerClick = (choice) => {
+    stopConfetti();
+    removeConfetti();
+
     const computerChoiceNumber = Math.random();
     let computer = 'Paper';
     if (computerChoiceNumber < 0.2) {
@@ -61,6 +65,7 @@ const SpockRockGame = () => {
         const game = gameLogic[playerChoice];
         if (game.defeats.indexOf(computerChoice) > -1) {
           setGameResult('You win!');
+          startConfetti();
           setScore({ ...score, playerScore: playerScore + 1 });
         } else {
           setGameResult('You lose...');
