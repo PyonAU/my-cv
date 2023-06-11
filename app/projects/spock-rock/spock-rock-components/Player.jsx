@@ -13,6 +13,8 @@ function Player({ name, score, handlePlayerClick, choice }) {
   const playerSelected = name === 'Computer' ? '' : styles.selectable;
 
   const playerIcon = cx(playerSelected, playerColor, styles.playerIcon, 'far');
+  console.log('handlePlayerClick:', handlePlayerClick);
+  // const handleRock = handlePlayerClick("Rock");
 
   return (
     <div className={styles.playerContainer}>
@@ -22,33 +24,37 @@ function Player({ name, score, handlePlayerClick, choice }) {
       </h2>
       <FontAwesomeIcon
         icon={faHandBackFist}
-        className={`${playerIcon} ${choice === "Rock" ? styles.selected : ''}`}
+        className={`${playerIcon} ${choice === 'Rock' ? styles.selected : ''}`}
         title="Rock"
-        onClick={handlePlayerClick}
+        onClick={() => handlePlayerClick("Rock")}
       />
       <FontAwesomeIcon
         icon={faHand}
-        className={playerIcon}
+        className={`${playerIcon} ${choice === 'Paper' ? styles.selected : ''}`}
         title="Paper"
-        onClick={handlePlayerClick}
+        onClick={() => handlePlayerClick("Paper")}
       />
       <FontAwesomeIcon
         icon={faHandScissors}
-        className={playerIcon}
+        className={`${playerIcon} ${
+          choice === 'Scissors' ? styles.selected : ''
+        }`}
         title="Scissors"
-        onClick={handlePlayerClick}
+        onClick={() => handlePlayerClick("Scissors")}
       />
       <FontAwesomeIcon
         icon={faHandLizard}
-        className={playerIcon}
+        className={`${playerIcon} ${
+          choice === 'Lizard' ? styles.selected : ''
+        }`}
         title="Lizard"
-        onClick={handlePlayerClick}
+        onClick={() => handlePlayerClick("Lizard")}
       />
       <FontAwesomeIcon
         icon={faHandSpock}
-        className={playerIcon}
+        className={`${playerIcon} ${choice === 'Spock' ? styles.selected : ''}`}
         title="Spock"
-        onClick={handlePlayerClick}
+        onClick={() => handlePlayerClick("Spock")}
       />
     </div>
   );

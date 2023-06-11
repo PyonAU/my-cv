@@ -20,12 +20,26 @@ const SpockRockGame = () => {
   const { playerScore, computerScore } = score;
   const { playerChoice, computerChoice } = isSelected;
 
-  const handlePlayerClick = (event) => {
-    event.preventDefault();
-    const choice = event.target.textContent;
-    console.log('choice:', choice);
+  const handlePlayerClick = (choice) => {
+    const computerChoiceNumber = Math.random();
+    let computer = 'Paper';
+    if (computerChoiceNumber < 0.2) {
+      computer = 'Rock';
+    } else if (computerChoiceNumber <= 0.4) {
+      computer = 'Paper';
+    } else if (computerChoiceNumber <= 0.6) {
+      computer = 'Scissors';
+    } else if (computerChoiceNumber <= 0.8) {
+      computer = 'Lizard';
+    } else {
+      computer = 'Spock';
+    }
 
-    setIsSelected({ ...isSelected, playerChoice: choice });
+    setIsSelected({
+      ...isSelected,
+      playerChoice: choice,
+      computerChoice: computer,
+    });
   };
 
   return (
