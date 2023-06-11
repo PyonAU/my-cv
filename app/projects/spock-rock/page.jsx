@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Header from './spock-rock-components/Header';
 import Player from './spock-rock-components/Player';
 import Result from './spock-rock-components/Result';
+import Reset from './spock-rock-components/Reset';
 import { startConfetti, stopConfetti, removeConfetti } from '../lib/spock-rock-game/confetti';
 import styles from './SpockRockGame.module.css';
 
@@ -76,6 +77,20 @@ const SpockRockGame = () => {
  
   }, [isSelected]);
 
+  const handleReset = () => {
+    setScore({
+      playerScore: 0,
+      computerScore: 0,
+    });
+    setIsSelected({
+      playerChoice: '',
+      computerChoice: '',
+    });
+    setGameResult('');
+    stopConfetti();
+    removeConfetti();
+  };
+
   return (
     <>
       <style jsx global>
@@ -102,6 +117,9 @@ const SpockRockGame = () => {
           handlePlayerClick={handlePlayerClick}
         />
         <Player name="Computer" score={computerScore} choice={computerChoice} />
+        <Reset 
+          handleReset={handleReset}
+        />
         <Result 
           gameResult={gameResult}
         />
