@@ -5,6 +5,14 @@ import Header from './spock-rock-components/Header';
 import Player from './spock-rock-components/Player';
 import styles from './SpockRockGame.module.css';
 
+const gameLogic = {
+  Rock: { name: 'Rock', defeats: ['Scissors', 'Lizard'] },
+  Paper: { name: 'Paper', defeats: ['Rock', 'Spock'] },
+  Scissors: { name: 'Scissors', defeats: ['Paper', 'Lizard'] },
+  Lizard: { name: 'Lizard', defeats: ['Paper', 'Spock'] },
+  Spock: { name: 'Spock', defeats: ['Scissors', 'Rock'] },
+};
+
 const SpockRockGame = () => {
   // State
   const [score, setScore] = useState({
@@ -41,6 +49,23 @@ const SpockRockGame = () => {
       computerChoice: computer,
     });
   };
+
+  useEffect(() => {
+    if (playerChoice && computerChoice) {
+      
+      if (playerChoice === computerChoice) {
+        console.log('It\'s a tie.');
+      } else {
+        const game = gameLogic[playerChoice];
+        if (game.defeats.indexOf(computerChoice) > -1) {
+          setScore({ ...score, playerScore: playerScore + 1 });
+        } else {
+          setScore({ ...score, computerScore: computerScore + 1});
+        }
+      }
+    }
+ 
+  }, [isSelected]);
 
   return (
     <>
