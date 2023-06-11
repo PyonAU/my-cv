@@ -13,8 +13,6 @@ function Player({ name, score, handlePlayerClick, choice }) {
   const playerSelected = name === 'Computer' ? '' : styles.selectable;
 
   const playerIcon = cx(playerSelected, playerColor, styles.playerIcon, 'far');
-  console.log('handlePlayerClick:', handlePlayerClick);
-  // const handleRock = handlePlayerClick("Rock");
 
   return (
     <div className={styles.playerContainer}>
