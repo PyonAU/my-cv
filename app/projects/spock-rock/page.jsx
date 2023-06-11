@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Header from './spock-rock-components/Header';
 import Player from './spock-rock-components/Player';
+import Result from './spock-rock-components/Result';
 import styles from './SpockRockGame.module.css';
 
 const gameLogic = {
@@ -23,6 +24,7 @@ const SpockRockGame = () => {
     playerChoice: '',
     computerChoice: '',
   });
+  const [gameResult, setGameResult] = useState('');
 
   // Destructuring
   const { playerScore, computerScore } = score;
@@ -54,12 +56,14 @@ const SpockRockGame = () => {
     if (playerChoice && computerChoice) {
       
       if (playerChoice === computerChoice) {
-        console.log('It\'s a tie.');
+        setGameResult('It\'s a tie.');
       } else {
         const game = gameLogic[playerChoice];
         if (game.defeats.indexOf(computerChoice) > -1) {
+          setGameResult('You win!');
           setScore({ ...score, playerScore: playerScore + 1 });
         } else {
+          setGameResult('You lose...');
           setScore({ ...score, computerScore: computerScore + 1});
         }
       }
@@ -93,6 +97,9 @@ const SpockRockGame = () => {
           handlePlayerClick={handlePlayerClick}
         />
         <Player name="Computer" score={computerScore} choice={computerChoice} />
+        <Result 
+          gameResult={gameResult}
+        />
       </div>
     </>
   );
