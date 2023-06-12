@@ -32,3 +32,14 @@
 .selected {
   color: black !important;
 }
+
+/* Media Query: iPhone (Vertical) */
+@media screen and (max-width: 376px) {
+  .playerContainer {
+    margin: 43px 0 25px 20px;
+  }
+
+  .playerIcon {
+    font-size: 35px;
+  }
+}

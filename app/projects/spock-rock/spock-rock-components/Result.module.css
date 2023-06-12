@@ -10,3 +10,10 @@
   margin-top: 20px;
   color: black;
 }
+
+/* Media Query: iPhone (Vertical) */
+@media screen and (max-width: 376px) {
+  .resultContainer {
+    margin: 0 20px;
+  }
+}

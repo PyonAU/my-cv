@@ -4,3 +4,10 @@
   margin-left: 50px;
   color: black;
 }
+
+/* Media Query: iPhone (Vertical) */
+@media screen and (max-width: 376px) {
+  .resetIcon {
+    margin-top: 15px;
+  }
+}
