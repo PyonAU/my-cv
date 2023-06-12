@@ -15,13 +15,17 @@ const Header = () => {
   // State
   const [isClicked, setIsClicked] = useState(false);
 
+  const handleInfoButton = () => {
+    setIsClicked((prev) => !prev);
+  };
+
   return (
     <>
       <div className={styles.header}>
         <h1 className={styles.title}>Rock Paper Scissors Lizard Spock</h1>
         <div
           className={styles.iconContainer}
-          onClick={() => setIsClicked(true)}
+          onClick={handleInfoButton}
         >
           <FontAwesomeIcon
             icon={faCircleInfo}
