@@ -24,13 +24,13 @@ function Player({ name, score, handlePlayerClick, choice }) {
         icon={faHandBackFist}
         className={`${playerIcon} ${choice === 'Rock' ? styles.selected : ''}`}
         title="Rock"
-        onClick={() => handlePlayerClick("Rock")}
+        onClick={() => handlePlayerClick('Rock')}
       />
       <FontAwesomeIcon
         icon={faHand}
         className={`${playerIcon} ${choice === 'Paper' ? styles.selected : ''}`}
         title="Paper"
-        onClick={() => handlePlayerClick("Paper")}
+        onClick={() => handlePlayerClick('Paper')}
       />
       <FontAwesomeIcon
         icon={faHandScissors}
@@ -38,7 +38,7 @@ function Player({ name, score, handlePlayerClick, choice }) {
           choice === 'Scissors' ? styles.selected : ''
         }`}
         title="Scissors"
-        onClick={() => handlePlayerClick("Scissors")}
+        onClick={() => handlePlayerClick('Scissors')}
       />
       <FontAwesomeIcon
         icon={faHandLizard}
@@ -46,13 +46,13 @@ function Player({ name, score, handlePlayerClick, choice }) {
           choice === 'Lizard' ? styles.selected : ''
         }`}
         title="Lizard"
-        onClick={() => handlePlayerClick("Lizard")}
+        onClick={() => handlePlayerClick('Lizard')}
       />
       <FontAwesomeIcon
         icon={faHandSpock}
         className={`${playerIcon} ${choice === 'Spock' ? styles.selected : ''}`}
         title="Spock"
-        onClick={() => handlePlayerClick("Spock")}
+        onClick={() => handlePlayerClick('Spock')}
       />
     </div>
   );
