@@ -13,7 +13,7 @@ const gameLogic = {
   Paper: { name: 'Paper', defeats: ['Rock', 'Spock'] },
   Scissors: { name: 'Scissors', defeats: ['Paper', 'Lizard'] },
   Lizard: { name: 'Lizard', defeats: ['Paper', 'Spock'] },
-  Spock: { name: 'Spock', defeats: ['Scissors', 'Rock'] },
+  Spock: { name: 'Spock', defeats: ['Rock', 'Scissors'] },
 };
 
 const SpockRockGame = () => {
