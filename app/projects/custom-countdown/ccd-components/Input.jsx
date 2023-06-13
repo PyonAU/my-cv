@@ -147,7 +147,7 @@ const Input = () => {
 
         {/* Complete */}
         <div className={styles.complete} hidden={distance >= 0 ? true : false}>
-          <h1 className={styles.mainTitle}>Countdown Complete!</h1>
+          <h1 className={styles.completeTitle}>Countdown Complete!</h1>
           <h1
             className={styles.mainTitle}
           >{`${userInput.title} finished on ${userInput.date}`}</h1>
