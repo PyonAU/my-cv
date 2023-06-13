@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import styles from './Input.module.css';
 
+// Set Date Input Min with Today's Date so that a user cannot select past dates
+const today = new Date().toISOString().split('T')[0];
+console.log(today);
+
+// Variables
 const second = 1000;
 const minute = second * 60;
 const hour = minute * 60;
 const day = hour * 24;
-
-// Variables
 let distance = 0;
 let countdownTimer;
 
@@ -14,7 +17,7 @@ const Input = () => {
   // State
   const [userInput, setUserInput] = useState({
     title: '',
-    date: ''
+    date: '',
   });
   const [time, setTime] = useState({
     days: 0,
@@ -30,8 +33,6 @@ const Input = () => {
       date: event.target[1].value,
     });
   };
-
-  console.log('userInput.date:', userInput.date);
 
   // Calculate days, hours, minutes and seconds
   const calculateTimeLeft = () => {
@@ -105,7 +106,7 @@ const Input = () => {
             <label className={styles.labels} htmlFor="date-picker">
               Select a Date
             </label>
-            <input className={styles.inputField} type="date" />
+            <input className={styles.inputField} type="date" min={today} />
             <button className={styles.buttons} type="submit">
               Submit
             </button>
@@ -136,8 +137,12 @@ const Input = () => {
         {/* Complete */}
         <div className={styles.complete} hidden={distance >= 0 ? true : false}>
           <h1 className={styles.mainTitle}>Countdown Complete!</h1>
-          <h1 className={styles.mainTitle}>{`${userInput.title} finished on ${userInput.date}`}</h1>
-          <button className={styles.buttons} onClick={handleReset}>New Countdown</button>
+          <h1
+            className={styles.mainTitle}
+          >{`${userInput.title} finished on ${userInput.date}`}</h1>
+          <button className={styles.buttons} onClick={handleReset}>
+            New Countdown
+          </button>
         </div>
       </div>
     </div>
