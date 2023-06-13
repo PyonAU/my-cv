@@ -1,6 +1,6 @@
 'use client';
 
-import Modal from './bookmarkComponents/Modal';
+import Modal from './bookmark-components/Modal';
 
 const BookmarkApp = () => {
   return (
