@@ -1,6 +1,7 @@
 'use client';
 
 import BackgroundVideo from './ccd-components/BackgroundVideo';
+import Input from './ccd-components/Input';
 
 const CustomCountdownPage = () => {
   return (
@@ -20,6 +21,7 @@ const CustomCountdownPage = () => {
         `}
       </style>
       <BackgroundVideo />
+      <Input />
     </>
   );
 };
