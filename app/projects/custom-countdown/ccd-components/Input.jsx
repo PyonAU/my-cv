@@ -6,19 +6,22 @@ const minute = second * 60;
 const hour = minute * 60;
 const day = hour * 24;
 
+// Variables
+let distance = 0;
+let countdownTimer;
+
 const Input = () => {
   // State
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState({
+    title: '',
+    date: ''
+  });
   const [time, setTime] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
-
-  // Variables
-  let distance = 0;
-  let countdownTimer;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -58,6 +61,21 @@ const Input = () => {
     countdownTimer = setInterval(() => calculateTimeLeft(), second);
   }, [userInput]);
 
+  const handleReset = () => {
+    clearInterval(countdownTimer);
+    setUserInput({
+      title: '',
+      date: '',
+    });
+    setTime({
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    });
+    distance = 0;
+  };
+
   return (
     <div>
       {/* Container */}
@@ -65,7 +83,7 @@ const Input = () => {
         {/* Input */}
         <div
           className={styles.inputContainer}
-          hidden={userInput.date !== undefined ? true : false}
+          hidden={userInput.date !== '' ? true : false}
         >
           <h1 className={styles.bigTitle}>Create a Custom Countdown!</h1>
           <form className={styles.form} onSubmit={handleSubmit}>
@@ -90,7 +108,7 @@ const Input = () => {
         {/* Countdown */}
         <div
           className={styles.countdown}
-          hidden={userInput.date === undefined || distance < 0 ? true : false}
+          hidden={userInput.date === '' || distance < 0 ? true : false}
         >
           <h1 className={styles.bigTitle}>{userInput.title}</h1>
           <ul className={styles.timer}>
@@ -103,7 +121,9 @@ const Input = () => {
               );
             })}
           </ul>
-          <button className={styles.buttons}>Reset</button>
+          <button className={styles.buttons} onClick={handleReset}>
+            Reset
+          </button>
         </div>
       </div>
     </div>
