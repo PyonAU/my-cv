@@ -76,6 +76,13 @@ const Input = () => {
     distance = 0;
   };
 
+  // Clear interval when countdown ends
+  useEffect(() => {
+    if (distance < 0) {
+      clearInterval(countdownTimer);
+    }
+  });
+
   return (
     <div>
       {/* Container */}
