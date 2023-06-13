@@ -5,3 +5,10 @@
   border-radius: 5px;
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
 }
+
+/* Media Query: iPhone (Vertical) */
+@media screen and (max-width: 376px) {
+  .gameContainer {
+    height: 550px;
+  }
+}
