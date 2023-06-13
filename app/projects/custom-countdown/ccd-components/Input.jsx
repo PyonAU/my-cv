@@ -55,6 +55,9 @@ const Input = () => {
 
       // Set the setTime state to each new time
       setTime({ days: days, hours: hours, minutes: minutes, seconds: seconds });
+
+      // Save to localStorage
+      localStorage.setItem('countdown', JSON.stringify(userInput));
     }
   };
 
@@ -75,6 +78,7 @@ const Input = () => {
       seconds: 0,
     });
     distance = 0;
+    localStorage.removeItem('countdown');
   };
 
   // Clear interval when countdown ends
@@ -83,6 +87,14 @@ const Input = () => {
       clearInterval(countdownTimer);
     }
   });
+
+  // Restore Previous Countdown
+  useEffect(() => {
+    // Get countdown from localStorage if available
+    if (localStorage.getItem('countdown')) {
+      setUserInput(JSON.parse(localStorage.getItem('countdown')));
+    }
+  }, []);
 
   return (
     <div>
