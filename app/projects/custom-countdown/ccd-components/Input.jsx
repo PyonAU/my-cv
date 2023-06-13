@@ -92,7 +92,7 @@ const Input = () => {
           className={styles.inputContainer}
           hidden={userInput.date !== '' ? true : false}
         >
-          <h1 className={styles.bigTitle}>Create a Custom Countdown!</h1>
+          <h1 className={styles.mainTitle}>Create a Custom Countdown!</h1>
           <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.labels} htmlFor="title">
               Title
@@ -117,7 +117,7 @@ const Input = () => {
           className={styles.countdown}
           hidden={userInput.date === '' || distance < 0 ? true : false}
         >
-          <h1 className={styles.bigTitle}>{userInput.title}</h1>
+          <h1 className={styles.mainTitle}>{userInput.title}</h1>
           <ul className={styles.timer}>
             {Object.entries(time).map(([key, value], i) => {
               return (
@@ -131,6 +131,13 @@ const Input = () => {
           <button className={styles.buttons} onClick={handleReset}>
             Reset
           </button>
+        </div>
+
+        {/* Complete */}
+        <div className={styles.complete} hidden={distance >= 0 ? true : false}>
+          <h1 className={styles.mainTitle}>Countdown Complete!</h1>
+          <h1 className={styles.mainTitle}>{`${userInput.title} finished on ${userInput.date}`}</h1>
+          <button className={styles.buttons} onClick={handleReset}>New Countdown</button>
         </div>
       </div>
     </div>
