@@ -3,7 +3,6 @@ import styles from './Input.module.css';
 
 // Set Date Input Min with Today's Date so that a user cannot select past dates
 const today = new Date().toISOString().split('T')[0];
-console.log(today);
 
 // Variables
 const second = 1000;
