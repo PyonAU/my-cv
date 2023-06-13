@@ -9,8 +9,7 @@ const CustomCountdownPage = () => {
       <style jsx global>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-          html 
-          
+  
           body {
             min-height: 100vh;
             overflow-y: hidden;
