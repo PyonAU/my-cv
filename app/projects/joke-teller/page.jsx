@@ -1,28 +1,27 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './JokeTeller.module.css';
 
 const JokeTellerPage = () => {
   // State
-  const [newJoke, setNewJoke] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handlePlayJoke = () => {
-    const fetchJokes = async () => {
+    const fetchVoice = async () => {
       const response = await fetch(`/api/joke-teller`);
-      const data = await response.json();
-
-      if (data.setup) {
-        setNewJoke(`${data.setup} ... ${data.delivery}`);
-      } else {
-        setNewJoke(data.joke);
-      }
+      const audioSrc = await response.text();
+      
+      const audio = new Audio();
+      audio.src = audioSrc;
+      audio.addEventListener('ended', () => setIsDisabled(false));
+      audio.load();
+      audio.play();
     };
 
-    fetchJokes();
+    fetchVoice();
+    setIsDisabled(true);
   };
-
-  console.log('newJoke:', newJoke);
 
   return (
     <>
@@ -35,13 +34,23 @@ const JokeTellerPage = () => {
         `}
       </style>
       <div className={styles.container}>
-        <button className={styles.jokeButton} onClick={handlePlayJoke}>
+        <button
+          className={styles.jokeButton}
+          onClick={handlePlayJoke}
+          disabled={isDisabled}
+        >
           Tell Me A Joke
         </button>
-        <audio controls></audio>
+        <audio controls hidden></audio>
       </div>
     </>
   );
 };
 
 export default JokeTellerPage;
+
+/*
+References:
+https://oxylabs.io/blog/nodejs-fetch-api
+http://corpus.hubwiz.com/2/node.js/21558763.html
+*/
