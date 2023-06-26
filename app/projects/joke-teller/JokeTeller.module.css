@@ -37,3 +37,15 @@
   cursor: default;
   filter: brightness(30%);
 }
+
+/* Media Query: Tablet or Smaller */
+@media screen and (max-width: 1000px) {
+  .container {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .jokeButton {
+    margin-top: 400px;
+  }
+}
