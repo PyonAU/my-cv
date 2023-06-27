@@ -1,0 +1,44 @@
+.dragColumn {
+  flex: 1;
+  margin: 0 10px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.backlogColumn .header,
+.backlogColumn .solid,
+.backlogColumn .solid:hover,
+.backlogColumn .over {
+  background-color: var(--column-1);
+}
+
+.progressColumn .header,
+.progressColumn .solid,
+.progressColumn .solid:hover,
+.progressColumn .over {
+  background-color: var(--column-2);
+}
+
+.completeColumn .header,
+.completeColumn .solid,
+.completeColumn .solid:hover,
+.completeColumn .over {
+  background-color: var(--column-3);
+}
+
+.onHoldColumn .header,
+.onHoldColumn .solid,
+.onHoldColumn .solid:hover,
+.onHoldColumn .over {
+  background-color: var(--column-4);
+}
+
