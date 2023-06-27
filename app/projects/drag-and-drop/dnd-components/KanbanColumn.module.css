@@ -75,3 +75,14 @@
   position: relative;
   top: -3px;
 }
+
+.solid {
+  display: flex;
+}
+
+.solid:hover {
+  transition: unset;
+  filter: brightness(95%);
+  color: white;
+}
+
