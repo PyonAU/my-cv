@@ -1,7 +1,6 @@
 'use client';
 
-import KanbanColumn from './dnd-components/KanbanColumn';
-import { channels } from '../lib/drop-and-drag/kanbanLists';
+import MainComponent from './dnd-components/MainComponent';
 import styles from './dragAndDrop.module.css';
 
 const DragAndDropPage = () => {
@@ -30,20 +29,7 @@ const DragAndDropPage = () => {
       </style>
 
       <h1 className={styles.mainTitle}>Kanban Board</h1>
-      {/* <Container> */}
-      <div className={styles.dragContainer}>
-        <ul className={styles.dragList}>
-          {channels.map(({ label, style }) => {
-            return (
-              <KanbanColumn
-                key={label}
-                status={label}
-                style={style}
-              ></KanbanColumn>
-            );
-          })}
-        </ul>
-      </div>
+      <MainComponent />
     </>
   );
 };

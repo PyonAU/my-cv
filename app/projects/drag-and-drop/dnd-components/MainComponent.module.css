@@ -1,0 +1,11 @@
+.dragContainer {
+  margin: 20px;
+}
+
+.dragList {
+  display: flex;
+  align-items: flex-start;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
