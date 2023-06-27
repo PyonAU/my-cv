@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import EditableElement from './EditableElement';
 import { labelsMap } from '@app/projects/lib/drop-and-drag/kanbanLists';
 import styles from './KanbanColumn.module.css';
 import cx from 'classnames';
@@ -33,6 +34,12 @@ const KanbanColumn = ({ status, style }) => {
         <div>
           <div className={btn}>
             <span>Save Item</span>
+          </div>
+
+          <div className={styles.addContainer}>
+            <EditableElement>
+              <div className={styles.addItem}></div>
+            </EditableElement>
           </div>
         </div>
       )}
