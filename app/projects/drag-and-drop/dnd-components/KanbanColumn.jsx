@@ -4,16 +4,21 @@ import { labelsMap } from '@app/projects/lib/drop-and-drag/kanbanLists';
 import styles from './KanbanColumn.module.css';
 import cx from 'classnames';
 
-const KanbanColumn = ({ status, style }) => {
+const KanbanColumn = ({ children, status, style }) => {
   // Style
   const column = cx(styles.dragColumn, styles[style]);
   const btn = cx(styles.addBtn, styles.solid);
 
   // State
   const [showForm, setShowForm] = useState(false);
+  const [userInput, setUserInput] = useState('');
 
   const handleShowInputBox = () => {
     setShowForm(true);
+  };
+
+  const handleUserInput = (event) => {
+    setUserInput(event);
   };
 
   return (
@@ -21,6 +26,7 @@ const KanbanColumn = ({ status, style }) => {
       <span className={styles.header}>
         <h1>{labelsMap[status]}</h1>
       </span>
+      {children}
 
       {/* Add Button Group */}
       {!showForm ? (
@@ -37,7 +43,7 @@ const KanbanColumn = ({ status, style }) => {
           </div>
 
           <div className={styles.addContainer}>
-            <EditableElement>
+            <EditableElement onChange={handleUserInput}>
               <div className={styles.addItem}></div>
             </EditableElement>
           </div>
