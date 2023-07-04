@@ -37,9 +37,9 @@ const KanbanColumn = ({
 
   const handleAddNewItem = () => {
     const addNewItem = {
+      _id: nanoid(),
       title: userInput,
       status: status,
-      _id: nanoid(),
     };
 
     setTasks((prevState) => [...prevState, addNewItem]);

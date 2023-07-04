@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import update from 'immutability-helper';
 import KanbanColumn from './KanbanColumn';
 import KanbanItem from './KanbanItem';
@@ -52,6 +52,9 @@ const MainComponent = () => {
     setUpdateText({ id, text: event, status });
   }, 250);
 
+  console.log('newTasks:', tasks);
+
+  // Move updated text to other columns
   const handleFocusOut = () => {
     setTasks((prevState) => {
       if (updateText.text === '') {
@@ -60,11 +63,31 @@ const MainComponent = () => {
 
       const findItem = prevState.find(({ _id }) => _id === updateText.id);
 
-      findItem.title = updateText.text;
+      const updatedText = findItem.title = updateText.text;
+
+      let data = JSON.parse(localStorage.getItem('kanbanboard'));
+      data = data.map((item) => {
+        if (item.title === updatedText) {
+          return { ...item, title: updatedText }
+        }
+        return item;
+      });
+      localStorage.setItem('kanbanboard', JSON.stringify(tasks));
 
       return prevState;
     });
   };
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('kanbanboard'));
+    if (items) {
+      setTasks(items);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('kanbanboard', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <>
