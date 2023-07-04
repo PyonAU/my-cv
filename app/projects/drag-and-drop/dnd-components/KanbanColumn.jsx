@@ -50,7 +50,7 @@ const KanbanColumn = ({
   return (
     <li className={column} ref={drop}>
       <span className={styles.header}>
-        <h1>{labelsMap[status]}</h1>
+        <h1 className={styles.status}>{labelsMap[status]}</h1>
       </span>
       {children}
 

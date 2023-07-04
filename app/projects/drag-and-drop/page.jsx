@@ -27,6 +27,11 @@ const DragAndDropPage = () => {
             font-family: Quicksand, sans-serif;
             overflow-y: hidden;
           }
+
+          @media screen and (max-width: 600px) {
+            body {
+              overflow-y: auto;
+            }
         `}
       </style>
 

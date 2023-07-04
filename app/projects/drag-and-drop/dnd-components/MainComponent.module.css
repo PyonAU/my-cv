@@ -53,3 +53,14 @@
 .customScroll::-webkit-scrollbar-thumb:hover {
   background-color: rgba(34, 33, 33, 0.8);
 }
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 600px) {
+  .dragContainer {
+    margin: 0;
+  }
+
+  .dragList {
+    display: block;
+  }
+}
