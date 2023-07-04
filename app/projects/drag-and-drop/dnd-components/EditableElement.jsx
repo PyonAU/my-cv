@@ -1,4 +1,4 @@
-import { Children, cloneElement, useEffect, useRef } from 'react';
+import { Children, cloneElement, useRef } from 'react';
 
 const EditableElement = ({ children, onChange }) => {
   // Ref

@@ -13,6 +13,11 @@ import styles from './MainComponent.module.css';
 const MainComponent = () => {
   // State
   const [tasks, setTasks] = useState(tasksList);
+  const [updateText, setUpdateText] = useState({
+    id: 0,
+    text: '',
+    status: '',
+  });
 
   const updateTasksList = useCallback(
     (id, status) => {
@@ -28,6 +33,38 @@ const MainComponent = () => {
     },
     [tasks]
   );
+
+  const debounce = (func, wait) => {
+    let timeout;
+
+    return function executedFunction(...args) {
+      const later = () => {
+        timeout = null;
+        func(...args);
+      };
+
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  };
+
+  const processChange = debounce(function handleChange(event, id, status) {
+    setUpdateText({ id, text: event, status });
+  }, 250);
+
+  const handleFocusOut = () => {
+    setTasks((prevState) => {
+      if (updateText.text === '') {
+        return prevState.filter(({ _id }) => _id !== updateText.id);
+      }
+
+      const findItem = prevState.find(({ _id }) => _id === updateText.id);
+
+      findItem.title = updateText.text;
+
+      return prevState;
+    });
+  };
 
   return (
     <>
@@ -52,8 +89,14 @@ const MainComponent = () => {
                       tasks={tasks}
                       label={label}
                     >
-                      <EditableElement>
-                        <li className={styles.dragItem}>{task.title}</li>
+                      <EditableElement
+                        onChange={(event) =>
+                          processChange(event, task._id, label)
+                        }
+                      >
+                        <li className={styles.dragItem} onBlur={handleFocusOut}>
+                          {task.title}
+                        </li>
                       </EditableElement>
                     </KanbanItem>
                   ))}
