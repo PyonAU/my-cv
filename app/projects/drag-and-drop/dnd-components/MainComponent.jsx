@@ -69,7 +69,7 @@ const MainComponent = () => {
   return (
     <>
       {/* <Container> */}
-      <div className={styles.dragContainer}>
+      <div className={`${styles.dragContainer} ${styles.customScroll}`}>
         <ul className={styles.dragList}>
           {channels.map(({ label, style }) => {
             return (

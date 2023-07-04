@@ -13,7 +13,7 @@ const KanbanItem = ({ children, id }) => {
   const opacity = isDragging ? 0.5 : 1;
 
   return (
-    <div className={styles.customScroll} ref={drag} style={{ opacity }}>
+    <div ref={drag} style={{ opacity }}>
       <ul className={styles.dragItemList}>{children}</ul>
     </div>
   );
