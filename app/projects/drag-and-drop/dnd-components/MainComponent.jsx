@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import update from 'immutability-helper';
 import KanbanColumn from './KanbanColumn';
 import KanbanItem from './KanbanItem';
 import EditableElement from './EditableElement';
@@ -12,6 +13,22 @@ import styles from './MainComponent.module.css';
 const MainComponent = () => {
   // State
   const [tasks, setTasks] = useState(tasksList);
+
+  const updateTasksList = useCallback(
+    (id, status) => {
+      let task = tasks.find((task) => task._id === id);
+      const taskIndex = tasks.indexOf(task);
+      task = { ...task, status };
+
+      let newTasks = update(tasks, {
+        [taskIndex]: { $set: task },
+      });
+
+      setTasks(newTasks);
+    },
+    [tasks]
+  );
+
   return (
     <>
       {/* <Container> */}
@@ -24,6 +41,7 @@ const MainComponent = () => {
                 status={label}
                 style={style}
                 setTasks={setTasks}
+                updateTasksList={updateTasksList}
               >
                 {tasks
                   .filter((task) => task.status === label)

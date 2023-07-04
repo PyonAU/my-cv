@@ -1,11 +1,18 @@
 import { useState } from 'react';
+import { useDrop } from 'react-dnd';
+import { nanoid } from 'nanoid';
 import EditableElement from './EditableElement';
 import { labelsMap } from '@app/projects/lib/drop-and-drag/kanbanLists';
 import styles from './KanbanColumn.module.css';
 import cx from 'classnames';
-import { nanoid } from 'nanoid';
 
-const KanbanColumn = ({ children, status, style, setTasks }) => {
+const KanbanColumn = ({
+  children,
+  status,
+  style,
+  setTasks,
+  updateTasksList,
+}) => {
   // Style
   const column = cx(styles.dragColumn, styles[style]);
   const btn = cx(styles.addBtn, styles.solid);
@@ -13,6 +20,10 @@ const KanbanColumn = ({ children, status, style, setTasks }) => {
   // State
   const [showForm, setShowForm] = useState(false);
   const [userInput, setUserInput] = useState('');
+  const [, drop] = useDrop({
+    accept: 'card',
+    drop: (item) => updateTasksList(item.id, status),
+  });
 
   const handleShowInputBox = () => {
     setShowForm(true);
@@ -28,7 +39,7 @@ const KanbanColumn = ({ children, status, style, setTasks }) => {
     const addNewItem = {
       title: userInput,
       status: status,
-      _id: nanoid()
+      _id: nanoid(),
     };
 
     setTasks((prevState) => [...prevState, addNewItem]);
@@ -37,7 +48,7 @@ const KanbanColumn = ({ children, status, style, setTasks }) => {
   };
 
   return (
-    <li className={column}>
+    <li className={column} ref={drop}>
       <span className={styles.header}>
         <h1>{labelsMap[status]}</h1>
       </span>
