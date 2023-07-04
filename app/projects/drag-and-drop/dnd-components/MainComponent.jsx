@@ -19,7 +19,12 @@ const MainComponent = () => {
         <ul className={styles.dragList}>
           {channels.map(({ label, style }) => {
             return (
-              <KanbanColumn key={label} status={label} style={style}>
+              <KanbanColumn
+                key={label}
+                status={label}
+                style={style}
+                setTasks={setTasks}
+              >
                 {tasks
                   .filter((task) => task.status === label)
                   .map((task) => (

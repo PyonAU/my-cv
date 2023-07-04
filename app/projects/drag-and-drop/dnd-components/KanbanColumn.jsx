@@ -3,8 +3,9 @@ import EditableElement from './EditableElement';
 import { labelsMap } from '@app/projects/lib/drop-and-drag/kanbanLists';
 import styles from './KanbanColumn.module.css';
 import cx from 'classnames';
+import { nanoid } from 'nanoid';
 
-const KanbanColumn = ({ children, status, style }) => {
+const KanbanColumn = ({ children, status, style, setTasks }) => {
   // Style
   const column = cx(styles.dragColumn, styles[style]);
   const btn = cx(styles.addBtn, styles.solid);
@@ -19,6 +20,20 @@ const KanbanColumn = ({ children, status, style }) => {
 
   const handleUserInput = (event) => {
     setUserInput(event);
+  };
+
+  console.log('userInput:', userInput);
+
+  const handleAddNewItem = () => {
+    const addNewItem = {
+      title: userInput,
+      status: status,
+      _id: nanoid()
+    };
+
+    setTasks((prevState) => [...prevState, addNewItem]);
+    setShowForm(false);
+    setUserInput('');
   };
 
   return (
@@ -38,7 +53,7 @@ const KanbanColumn = ({ children, status, style }) => {
         </div>
       ) : (
         <div>
-          <div className={btn}>
+          <div className={btn} onClick={handleAddNewItem}>
             <span>Save Item</span>
           </div>
 
