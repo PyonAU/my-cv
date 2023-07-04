@@ -1,5 +1,7 @@
 'use client';
 
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import MainComponent from './dnd-components/MainComponent';
 import styles from './dragAndDrop.module.css';
 
@@ -29,7 +31,9 @@ const DragAndDropPage = () => {
       </style>
 
       <h1 className={styles.mainTitle}>Kanban Board</h1>
-      <MainComponent />
+      <DndProvider backend={HTML5Backend}>
+        <MainComponent />
+      </DndProvider>
     </>
   );
 };
