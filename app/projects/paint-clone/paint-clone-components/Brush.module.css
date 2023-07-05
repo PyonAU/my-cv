@@ -39,6 +39,11 @@
   outline: none;
 }
 
+.colorPalette {
+  position: absolute;
+  z-index: 100;
+}
+
 .size {
   min-width: 40px;
   height: 35px;

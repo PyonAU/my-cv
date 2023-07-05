@@ -1,8 +1,15 @@
+import { SketchPicker } from 'react-color';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrush } from '@fortawesome/free-solid-svg-icons';
 import styles from './Brush.module.css';
 
-const Brush = ({ handleBrushEraserIcons, brushIcon }) => {
+const Brush = ({
+  handleBrushEraserIcons,
+  brushIcon,
+  brushColor,
+  handleBrushPicker,
+  isBrushBarClicked,
+}) => {
   const brushIconColor = brushIcon ? 'black' : 'white';
 
   return (
@@ -14,7 +21,16 @@ const Brush = ({ handleBrushEraserIcons, brushIcon }) => {
         onClick={() => handleBrushEraserIcons('Brush')}
         style={{ color: brushIconColor }}
       />
-      <input className={styles.labelStyle} type="text" />
+      <input
+        className={styles.labelStyle}
+        type="text"
+        value={brushColor}
+        style={{ backgroundColor: brushColor }}
+        onClick={handleBrushPicker}
+      />
+      <div className={styles.colorPalette}>
+        {isBrushBarClicked && <SketchPicker color={brushColor} />}
+      </div>
       <span className={styles.size} title="Brush Size">
         10
       </span>
