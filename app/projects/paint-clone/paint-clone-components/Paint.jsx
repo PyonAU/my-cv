@@ -3,6 +3,7 @@ import Bucket from './Bucket';
 import Eraser from './Eraser';
 import Clear from './Clear';
 import LocalStorage from './LocalStorage';
+import SaveImage from './SaveImage';
 import styles from './Paint.module.css';
 
 const Paint = () => {
@@ -13,6 +14,7 @@ const Paint = () => {
       <Eraser />
       <Clear />
       <LocalStorage />
+      <SaveImage />
     </div>
   );
 };
