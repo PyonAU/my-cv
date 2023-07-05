@@ -2,6 +2,7 @@ import Brush from './/Brush';
 import Bucket from './Bucket';
 import Eraser from './Eraser';
 import Clear from './Clear';
+import LocalStorage from './LocalStorage';
 import styles from './Paint.module.css';
 
 const Paint = () => {
@@ -11,6 +12,7 @@ const Paint = () => {
       <Bucket />
       <Eraser />
       <Clear />
+      <LocalStorage />
     </div>
   );
 };
