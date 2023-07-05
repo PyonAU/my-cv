@@ -21,10 +21,6 @@
   cursor: default;
 }
 
-.bucketIcon:hover {
-  filter: brightness(90%);
-}
-
 .labelStyle {
   border-radius: 5px;
   border: none;
@@ -35,4 +31,9 @@
   cursor: pointer;
   outline: none;
   margin-left: 10px;
+}
+
+.colorPalette {
+  position: absolute;
+  z-index: 100;
 }
