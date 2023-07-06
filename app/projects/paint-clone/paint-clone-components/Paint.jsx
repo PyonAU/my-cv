@@ -45,7 +45,9 @@ const Paint = () => {
 
   return (
     <div className={styles.topBar}>
-      <ActiveDisplay />
+      <ActiveDisplay 
+        brushIcon={brushIcon}
+      />
       <Brush
         handleBrushEraserIcons={handleBrushEraserIcons}
         brushIcon={brushIcon}

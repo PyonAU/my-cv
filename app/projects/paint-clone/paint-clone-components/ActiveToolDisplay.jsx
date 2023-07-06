@@ -1,10 +1,10 @@
 import styles from './ActiveToolDisplay.module.css';
 
-const ActiveToolDisplay = () => {
+const ActiveToolDisplay = ({ brushIcon }) => {
   return (
     <div>
       <span className={styles.activeTool} title="Active Tool">
-        Brush
+        {brushIcon ? 'Brush' : 'Eraser'}
       </span>
     </div>
   );
