@@ -11,6 +11,8 @@ const Brush = ({
   isBrushBarClicked,
   handleColorCode,
   handleInputHexCode,
+  handleSliderChange,
+  sliderSize,
 }) => {
   const brushIconColor = brushIcon ? 'black' : 'white';
 
@@ -39,7 +41,7 @@ const Brush = ({
         )}
       </div>
       <span className={styles.size} title="Brush Size">
-        10
+        {sliderSize < 10 ? `0${sliderSize}` : sliderSize}
       </span>
       <input
         type="range"
@@ -47,6 +49,7 @@ const Brush = ({
         max="50"
         className={styles.slider}
         defaultValue="10"
+        onChange={handleSliderChange}
       />
     </div>
   );

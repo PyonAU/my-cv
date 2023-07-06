@@ -20,6 +20,7 @@ const Paint = () => {
   });
   const [isBrushBarClicked, setIsBrushBarClicked] = useState(false);
   const [isBucketBarClicked, setIsBucketBarClicked] = useState(false);
+  const [sliderSize, setSliderSize] = useState(10);
 
   // Destructuring
   const { brushIcon, eraserIcon } = isIconClicked;
@@ -59,6 +60,10 @@ const Paint = () => {
     }
   };
 
+  const handleSliderChange = (event) => {
+    setSliderSize(event.target.valueAsNumber);
+  };
+
   return (
     <div className={styles.topBar}>
       <ActiveDisplay brushIcon={brushIcon} />
@@ -70,6 +75,8 @@ const Paint = () => {
         isBrushBarClicked={isBrushBarClicked}
         handleColorCode={handleColorCode}
         handleInputHexCode={handleInputHexCode}
+        handleSliderChange={handleSliderChange}
+        sliderSize={sliderSize}
       />
       <Bucket
         bucketColor={bucketColor}
