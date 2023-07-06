@@ -40,25 +40,35 @@ const Paint = () => {
 
   const handleBucketPicker = () => {
     setIsBrushBarClicked(false);
-    setIsBucketBarClicked((prev) => !prev)
+    setIsBucketBarClicked((prev) => !prev);
+  };
+
+  const handleColorCode = (event) => {
+    if (isBrushBarClicked) {
+      setColorHexCode({ ...colorHexCode, brushColor: event.hex });
+    }
+
+    if (isBucketBarClicked) {
+      setColorHexCode({ ...colorHexCode, bucketColor: event.hex });
+    }
   };
 
   return (
     <div className={styles.topBar}>
-      <ActiveDisplay 
-        brushIcon={brushIcon}
-      />
+      <ActiveDisplay brushIcon={brushIcon} />
       <Brush
         handleBrushEraserIcons={handleBrushEraserIcons}
         brushIcon={brushIcon}
         brushColor={brushColor}
         handleBrushPicker={handleBrushPicker}
         isBrushBarClicked={isBrushBarClicked}
+        handleColorCode={handleColorCode}
       />
       <Bucket
         bucketColor={bucketColor}
         handleBucketPicker={handleBucketPicker}
         isBucketBarClicked={isBucketBarClicked}
+        handleColorCode={handleColorCode}
       />
       <Eraser
         handleBrushEraserIcons={handleBrushEraserIcons}

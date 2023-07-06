@@ -7,7 +7,9 @@ const Bucket = ({
   bucketColor,
   handleBucketPicker,
   isBucketBarClicked,
+  handleColorCode,
 }) => {
+  const bucketHexCode = bucketColor.toUpperCase();
   return (
     <div className={`${styles.bucket} ${styles.tool}`}>
       <FontAwesomeIcon
@@ -17,12 +19,14 @@ const Bucket = ({
       />
       <input
         className={styles.labelStyle}
-        value={bucketColor}
+        value={bucketHexCode}
         style={{ backgroundColor: bucketColor }}
         onClick={handleBucketPicker}
       />
       <div className={styles.colorPalette}>
-        {isBucketBarClicked && <SketchPicker color={bucketColor} />}
+        {isBucketBarClicked && (
+          <SketchPicker color={bucketColor} onChange={handleColorCode} />
+        )}
       </div>
     </div>
   );

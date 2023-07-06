@@ -9,8 +9,11 @@ const Brush = ({
   brushColor,
   handleBrushPicker,
   isBrushBarClicked,
+  handleColorCode,
 }) => {
   const brushIconColor = brushIcon ? 'black' : 'white';
+
+  const brushHexCode = brushColor.toUpperCase();
 
   return (
     <div className={`${styles.brush} ${styles.tool}`}>
@@ -24,12 +27,14 @@ const Brush = ({
       <input
         className={styles.labelStyle}
         type="text"
-        value={brushColor}
+        value={brushHexCode}
         style={{ backgroundColor: brushColor }}
         onClick={handleBrushPicker}
       />
       <div className={styles.colorPalette}>
-        {isBrushBarClicked && <SketchPicker color={brushColor} />}
+        {isBrushBarClicked && (
+          <SketchPicker color={brushColor} onChange={handleColorCode} />
+        )}
       </div>
       <span className={styles.size} title="Brush Size">
         10
