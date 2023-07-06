@@ -10,6 +10,7 @@ const Brush = ({
   handleBrushPicker,
   isBrushBarClicked,
   handleColorCode,
+  handleInputHexCode,
 }) => {
   const brushIconColor = brushIcon ? 'black' : 'white';
 
@@ -30,6 +31,7 @@ const Brush = ({
         value={brushHexCode}
         style={{ backgroundColor: brushColor }}
         onClick={handleBrushPicker}
+        onChange={(event) => handleInputHexCode(event, 'Brush')}
       />
       <div className={styles.colorPalette}>
         {isBrushBarClicked && (

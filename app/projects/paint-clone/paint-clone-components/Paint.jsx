@@ -46,10 +46,16 @@ const Paint = () => {
   const handleColorCode = (event) => {
     if (isBrushBarClicked) {
       setColorHexCode({ ...colorHexCode, brushColor: event.hex });
-    }
-
-    if (isBucketBarClicked) {
+    } else {
       setColorHexCode({ ...colorHexCode, bucketColor: event.hex });
+    }
+  };
+
+  const handleInputHexCode = (event, value) => {
+    if (value === 'Brush') {
+      setColorHexCode({ ...colorHexCode, brushColor: event.target.value });
+    } else {
+      setColorHexCode({ ...colorHexCode, bucketColor: event.target.value });
     }
   };
 
@@ -63,12 +69,14 @@ const Paint = () => {
         handleBrushPicker={handleBrushPicker}
         isBrushBarClicked={isBrushBarClicked}
         handleColorCode={handleColorCode}
+        handleInputHexCode={handleInputHexCode}
       />
       <Bucket
         bucketColor={bucketColor}
         handleBucketPicker={handleBucketPicker}
         isBucketBarClicked={isBucketBarClicked}
         handleColorCode={handleColorCode}
+        handleInputHexCode={handleInputHexCode}
       />
       <Eraser
         handleBrushEraserIcons={handleBrushEraserIcons}

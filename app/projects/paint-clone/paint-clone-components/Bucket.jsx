@@ -8,6 +8,7 @@ const Bucket = ({
   handleBucketPicker,
   isBucketBarClicked,
   handleColorCode,
+  handleInputHexCode,
 }) => {
   const bucketHexCode = bucketColor.toUpperCase();
   return (
@@ -22,6 +23,7 @@ const Bucket = ({
         value={bucketHexCode}
         style={{ backgroundColor: bucketColor }}
         onClick={handleBucketPicker}
+        onChange={(event) => handleInputHexCode(event, 'Bucket')}
       />
       <div className={styles.colorPalette}>
         {isBucketBarClicked && (
