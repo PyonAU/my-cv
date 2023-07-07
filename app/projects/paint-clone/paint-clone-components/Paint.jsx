@@ -41,6 +41,7 @@ const Paint = () => {
   const [isBrushBarClicked, setIsBrushBarClicked] = useState(false);
   const [isBucketBarClicked, setIsBucketBarClicked] = useState(false);
   const [sliderSize, setSliderSize] = useState(10);
+  const [isCleared, setIsCleared] = useState(false);
 
   // Destructuring
   const { brushIcon, eraserIcon } = isIconClicked;
@@ -84,6 +85,10 @@ const Paint = () => {
     setSliderSize(event.target.valueAsNumber);
   };
 
+  const handleClearDrawing = () => {
+    setIsCleared(true);
+  };
+
   return (
     <>
       <div className={styles.topBar}>
@@ -110,7 +115,7 @@ const Paint = () => {
           handleBrushEraserIcons={handleBrushEraserIcons}
           eraserIcon={eraserIcon}
         />
-        <DynamicClear />
+        <DynamicClear handleClearDrawing={handleClearDrawing} />
         <DynamicLocalStorage />
         <DynamicSaveImage />
       </div>
@@ -121,6 +126,8 @@ const Paint = () => {
           sliderSize={sliderSize}
           brushColor={brushColor}
           eraserIcon={eraserIcon}
+          isCleared={isCleared}
+          setIsCleared={setIsCleared}
         />
       )}
     </>

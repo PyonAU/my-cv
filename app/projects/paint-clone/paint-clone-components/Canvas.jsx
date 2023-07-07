@@ -35,7 +35,7 @@ function Canvas(props) {
       canvasRef.current.width,
       canvasRef.current.height
     );
-  }, [props.bucketColor]);
+  }, [props.bucketColor, props.isCleared]);
 
   const [windowWidth, windowHeight] = useWindowSize(() => {
     setWidth(window.innerWidth);
@@ -71,6 +71,7 @@ function Canvas(props) {
     );
 
     setIsDrawing(true);
+    props.setIsCleared(false);
   };
 
   const drawing = (event) => {
