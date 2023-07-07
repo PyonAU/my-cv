@@ -23,6 +23,7 @@ const Brush = ({
       <FontAwesomeIcon
         className={styles.brushIcon}
         icon={faBrush}
+        id="brush"
         title="Brush"
         onClick={() => handleBrushEraserIcons('Brush')}
         style={{ color: brushIconColor }}
@@ -30,6 +31,7 @@ const Brush = ({
       <input
         className={styles.labelStyle}
         type="text"
+        id="hex-code"
         value={brushHexCode}
         style={{ backgroundColor: brushColor }}
         onClick={handleBrushPicker}
@@ -40,13 +42,14 @@ const Brush = ({
           <SketchPicker color={brushColor} onChange={handleColorCode} />
         )}
       </div>
-      <span className={styles.size} title="Brush Size">
+      <span className={styles.size} title="Brush Size" id="brush-size">
         {sliderSize < 10 ? `0${sliderSize}` : sliderSize}
       </span>
       <input
         type="range"
         min="1"
         max="50"
+        id="brush-slider"
         className={styles.slider}
         defaultValue="10"
         onChange={handleSliderChange}

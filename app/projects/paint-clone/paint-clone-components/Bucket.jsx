@@ -17,6 +17,7 @@ const Bucket = ({
         className={styles.bucketIcon}
         icon={faFillDrip}
         title="Background Color"
+        id="bucket"
       />
       <input
         className={styles.labelStyle}
@@ -24,6 +25,7 @@ const Bucket = ({
         style={{ backgroundColor: bucketColor }}
         onClick={handleBucketPicker}
         onChange={(event) => handleInputHexCode(event, 'Bucket')}
+        id="bucket-color"
       />
       <div className={styles.colorPalette}>
         {isBucketBarClicked && (

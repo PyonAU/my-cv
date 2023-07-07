@@ -1,12 +1,32 @@
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import ActiveDisplay from './ActiveToolDisplay';
-import Brush from './/Brush';
-import Bucket from './Bucket';
-import Eraser from './Eraser';
-import Clear from './Clear';
-import LocalStorage from './LocalStorage';
-import SaveImage from './SaveImage';
+import Canvas from './Canvas';
 import styles from './Paint.module.css';
+
+const DynamicBrush = dynamic(() => import('./Brush'), {
+  ssr: false,
+});
+
+const DynamicBucket = dynamic(() => import('./Bucket'), {
+  ssr: false,
+});
+
+const DynamicEraser = dynamic(() => import('./Eraser'), {
+  ssr: false,
+});
+
+const DynamicClear = dynamic(() => import('./Clear'), {
+  ssr: false,
+});
+
+const DynamicLocalStorage = dynamic(() => import('./LocalStorage'), {
+  ssr: false,
+});
+
+const DynamicSaveImage = dynamic(() => import('./SaveImage'), {
+  ssr: false,
+});
 
 const Paint = () => {
   // State
@@ -65,34 +85,37 @@ const Paint = () => {
   };
 
   return (
-    <div className={styles.topBar}>
-      <ActiveDisplay brushIcon={brushIcon} />
-      <Brush
-        handleBrushEraserIcons={handleBrushEraserIcons}
-        brushIcon={brushIcon}
-        brushColor={brushColor}
-        handleBrushPicker={handleBrushPicker}
-        isBrushBarClicked={isBrushBarClicked}
-        handleColorCode={handleColorCode}
-        handleInputHexCode={handleInputHexCode}
-        handleSliderChange={handleSliderChange}
-        sliderSize={sliderSize}
-      />
-      <Bucket
-        bucketColor={bucketColor}
-        handleBucketPicker={handleBucketPicker}
-        isBucketBarClicked={isBucketBarClicked}
-        handleColorCode={handleColorCode}
-        handleInputHexCode={handleInputHexCode}
-      />
-      <Eraser
-        handleBrushEraserIcons={handleBrushEraserIcons}
-        eraserIcon={eraserIcon}
-      />
-      <Clear />
-      <LocalStorage />
-      <SaveImage />
-    </div>
+    <>
+      <div className={styles.topBar}>
+        <ActiveDisplay brushIcon={brushIcon} />
+        <DynamicBrush
+          handleBrushEraserIcons={handleBrushEraserIcons}
+          brushIcon={brushIcon}
+          brushColor={brushColor}
+          handleBrushPicker={handleBrushPicker}
+          isBrushBarClicked={isBrushBarClicked}
+          handleColorCode={handleColorCode}
+          handleInputHexCode={handleInputHexCode}
+          handleSliderChange={handleSliderChange}
+          sliderSize={sliderSize}
+        />
+        <DynamicBucket
+          bucketColor={bucketColor}
+          handleBucketPicker={handleBucketPicker}
+          isBucketBarClicked={isBucketBarClicked}
+          handleColorCode={handleColorCode}
+          handleInputHexCode={handleInputHexCode}
+        />
+        <DynamicEraser
+          handleBrushEraserIcons={handleBrushEraserIcons}
+          eraserIcon={eraserIcon}
+        />
+        <DynamicClear />
+        <DynamicLocalStorage />
+        <DynamicSaveImage />
+      </div>
+      {brushColor && <Canvas bucketColor={bucketColor} />}
+    </>
   );
 };
 
