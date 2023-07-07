@@ -5,6 +5,7 @@ function Canvas(props) {
   // State
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
+  const [isDrawing, setIsDrawing] = useState(false);
 
   // Ref
   const canvasRef = useRef();
@@ -49,7 +50,59 @@ function Canvas(props) {
     );
   });
 
-  return <canvas ref={canvasRef} width={width} height={height} />;
+  const startDrawing = (event) => {
+    ctx.current.lineJoin = 'round';
+    ctx.current.lineCap = 'round';
+
+    if (props.brushIcon) {
+      ctx.current.lineWidth = props.sliderSize;
+      ctx.current.strokeStyle = props.brushColor;
+    }
+    if (props.eraserIcon) {
+      ctx.current.lineWidth = 50;
+      ctx.current.strokeStyle = props.bucketColor;
+    }
+
+    ctx.current.beginPath();
+
+    ctx.current.moveTo(
+      event.clientX - canvasRef.current.offsetLeft,
+      event.clientY - canvasRef.current.offsetTop
+    );
+
+    setIsDrawing(true);
+  };
+
+  const drawing = (event) => {
+    const coords = [
+      event.clientX - canvasRef.current.offsetLeft,
+      event.clientY - canvasRef.current.offsetTop,
+    ];
+
+    if (isDrawing) {
+      ctx.current.lineTo(...coords);
+      ctx.current.stroke();
+    } else if (props.drawing) {
+      props.drawing(...coords);
+    }
+  };
+
+  const stopDrawing = () => {
+    ctx.current.closePath();
+    setIsDrawing(false);
+  };
+
+  return (
+    <canvas
+      ref={canvasRef}
+      width={width}
+      height={height}
+      onMouseDown={startDrawing}
+      onMouseUp={stopDrawing}
+      onMouseOut={stopDrawing}
+      onMouseMove={drawing}
+    />
+  );
 }
 
 export default Canvas;

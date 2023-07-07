@@ -114,7 +114,15 @@ const Paint = () => {
         <DynamicLocalStorage />
         <DynamicSaveImage />
       </div>
-      {brushColor && <Canvas bucketColor={bucketColor} />}
+      {brushColor && (
+        <Canvas
+          bucketColor={bucketColor}
+          brushIcon={brushIcon}
+          sliderSize={sliderSize}
+          brushColor={brushColor}
+          eraserIcon={eraserIcon}
+        />
+      )}
     </>
   );
 };
