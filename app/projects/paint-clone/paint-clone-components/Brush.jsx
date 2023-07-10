@@ -25,7 +25,7 @@ const Brush = ({
         icon={faBrush}
         id="brush"
         title="Brush"
-        onClick={() => handleBrushEraserIcons('Brush')}
+        onClick={() => handleBrushEraserIcons('brush')}
         style={{ color: brushIconColor }}
       />
       <input

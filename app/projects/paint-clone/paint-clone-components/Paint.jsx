@@ -54,7 +54,7 @@ const Paint = () => {
   const { save, load, clear } = storage;
 
   const handleBrushEraserIcons = (value) => {
-    if (value === 'Brush') {
+    if (value === 'brush') {
       setIsIconClicked({ brushIcon: true, eraserIcon: false });
     } else {
       setIsIconClicked({ brushIcon: false, eraserIcon: true });

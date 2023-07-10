@@ -11,7 +11,7 @@ const Eraser = ({ handleBrushEraserIcons, eraserIcon }) => {
         className={styles.eraserIcon}
         icon={faEraser}
         title="Eraser"
-        onClick={() => handleBrushEraserIcons('Eraser')}
+        onClick={() => handleBrushEraserIcons('eraser')}
         style={{ color: eraserIconColor }}
       />
     </div>
