@@ -6,6 +6,7 @@ function Canvas(props) {
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
   const [isDrawing, setIsDrawing] = useState(false);
+  const [drawnArray, setDrawnArray] = useState([]);
 
   // Ref
   const canvasRef = useRef();
@@ -15,6 +16,40 @@ function Canvas(props) {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
   }, []);
+
+  // Draw what is stored in DrawnArray
+  const restoreCanvas = () => {
+    for (let i = 1; i < drawnArray.length; i++) {
+      ctx.current.beginPath();
+      ctx.current.moveTo(drawnArray[i - 1].x, drawnArray[i - 1].y);
+      ctx.current.lineWidth = drawnArray[i].size;
+      ctx.current.lineCap = 'round';
+
+      if (drawnArray[i].eraser) {
+        ctx.current.strokeStyle = props.bucketColor;
+        ctx.current.lineWidth = '50';
+      } else {
+        ctx.current.strokeStyle = drawnArray[i].color;
+      }
+
+      ctx.current.lineTo(drawnArray[i].x, drawnArray[i].y);
+      ctx.current.stroke();
+    }
+  };
+
+  // Store Drawn Lines in DrawnArray
+  const storeDrawn = (x, y, size, color, erase) => {
+    setDrawnArray((prevState) => {
+      const line = {
+        x,
+        y,
+        size,
+        color,
+        erase,
+      };
+      return [...prevState, line];
+    });
+  };
 
   useEffect(() => {
     ctx.current = canvasRef.current.getContext('2d');
@@ -35,6 +70,12 @@ function Canvas(props) {
       canvasRef.current.width,
       canvasRef.current.height
     );
+
+    if (props.isCleared) {
+      setDrawnArray([]);
+    } else {
+      restoreCanvas();
+    }
   }, [props.bucketColor, props.isCleared]);
 
   const [windowWidth, windowHeight] = useWindowSize(() => {
@@ -72,6 +113,11 @@ function Canvas(props) {
 
     setIsDrawing(true);
     props.setIsCleared(false);
+    props.setStorage({
+      save: false,
+      load: false,
+      clear: false,
+    });
   };
 
   const drawing = (event) => {
@@ -83,8 +129,25 @@ function Canvas(props) {
     if (isDrawing) {
       ctx.current.lineTo(...coords);
       ctx.current.stroke();
+      props.eraserIcon
+        ? storeDrawn(
+            coords[0],
+            coords[1],
+            50,
+            props.bucketColor,
+            props.eraserIcon
+          )
+        : storeDrawn(
+            coords[0],
+            coords[1],
+            props.sliderSize,
+            props.brushColor,
+            props.eraserIcon
+          );
     } else if (props.drawing) {
       props.drawing(...coords);
+    } else {
+      storeDrawn(undefined);
     }
   };
 
@@ -92,6 +155,25 @@ function Canvas(props) {
     ctx.current.closePath();
     setIsDrawing(false);
   };
+
+  useEffect(() => {
+    if (props.save) {
+      localStorage.setItem('canvas', JSON.stringify(drawnArray));
+    }
+  }, [props.save]);
+
+  useEffect(() => {
+    const loadSavedDrawing = localStorage.getItem('canvas');
+    if (loadSavedDrawing) {
+      setDrawnArray(JSON.parse(loadSavedDrawing));
+    }
+
+    restoreCanvas();
+  }, [props.load]);
+
+  useEffect(() => {
+    localStorage.removeItem('canvas');
+  }, [props.clear]);
 
   return (
     <canvas

@@ -4,7 +4,7 @@ import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import styles from './LocalStorage.module.css';
 
-const LocalStorage = () => {
+const LocalStorage = ({ handleLocalStorage }) => {
   return (
     <>
       {/* Save to Local Storage */}
@@ -13,6 +13,7 @@ const LocalStorage = () => {
           className={styles.localStorageIcon}
           icon={faDownload}
           title="Save to Local Storage"
+          onClick={() => handleLocalStorage('save')}
         />
       </div>
 
@@ -22,6 +23,7 @@ const LocalStorage = () => {
           className={styles.localStorageIcon}
           icon={faUpload}
           title="Load from Local Storage"
+          onClick={() => handleLocalStorage('load')}
         />
       </div>
 
@@ -31,6 +33,7 @@ const LocalStorage = () => {
           className={styles.localStorageIcon}
           icon={faTrashCan}
           title="Clear Local Storage"
+          onClick={() => handleLocalStorage('clear')}
         />
       </div>
     </>

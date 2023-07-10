@@ -42,10 +42,16 @@ const Paint = () => {
   const [isBucketBarClicked, setIsBucketBarClicked] = useState(false);
   const [sliderSize, setSliderSize] = useState(10);
   const [isCleared, setIsCleared] = useState(false);
+  const [storage, setStorage] = useState({
+    save: false,
+    load: false,
+    clear: false,
+  });
 
   // Destructuring
   const { brushIcon, eraserIcon } = isIconClicked;
   const { brushColor, bucketColor } = colorHexCode;
+  const { save, load, clear } = storage;
 
   const handleBrushEraserIcons = (value) => {
     if (value === 'Brush') {
@@ -53,6 +59,13 @@ const Paint = () => {
     } else {
       setIsIconClicked({ brushIcon: false, eraserIcon: true });
     }
+
+    setIsCleared(false);
+    setStorage({
+      save: false,
+      load: false,
+      clear: false,
+    });
   };
 
   const handleBrushPicker = () => {
@@ -87,12 +100,36 @@ const Paint = () => {
 
   const handleClearDrawing = () => {
     setIsCleared(true);
+    setStorage({
+      save: false,
+      load: false,
+      clear: false,
+    });
+  };
+
+  const handleLocalStorage = (value) => {
+    if (value === 'save') {
+      setStorage({ save: true, load: false, clear: false });
+    } else if (value === 'load') {
+      setStorage({ save: false, load: true, clear: false });
+    } else {
+      setStorage({ save: false, load: false, clear: true });
+    }
+
+    setIsCleared(false);
   };
 
   return (
     <>
       <div className={styles.topBar}>
-        <ActiveDisplay brushIcon={brushIcon} />
+        <ActiveDisplay
+          brushIcon={brushIcon}
+          eraserIcon={eraserIcon}
+          isCleared={isCleared}
+          save={save}
+          load={load}
+          clear={clear}
+        />
         <DynamicBrush
           handleBrushEraserIcons={handleBrushEraserIcons}
           brushIcon={brushIcon}
@@ -116,7 +153,7 @@ const Paint = () => {
           eraserIcon={eraserIcon}
         />
         <DynamicClear handleClearDrawing={handleClearDrawing} />
-        <DynamicLocalStorage />
+        <DynamicLocalStorage handleLocalStorage={handleLocalStorage} />
         <DynamicSaveImage />
       </div>
       {brushColor && (
@@ -128,6 +165,10 @@ const Paint = () => {
           eraserIcon={eraserIcon}
           isCleared={isCleared}
           setIsCleared={setIsCleared}
+          save={save}
+          load={load}
+          clear={clear}
+          setStorage={setStorage}
         />
       )}
     </>

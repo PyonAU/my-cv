@@ -10,7 +10,7 @@ const PaintClonePage = () => {
           @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 
           html body {
-            background-color: rgb(177, 177, 177);
+            background-color: #FFFFFF;
             font-family: Oswald, sans-serif;
             overflow: hidden;
           }
