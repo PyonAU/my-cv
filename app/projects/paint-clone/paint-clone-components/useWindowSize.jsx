@@ -10,7 +10,7 @@ export default function useWindowSize(cb) {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  });
+  }, []);
 
   return [windowWidth, windowHeight];
 }
