@@ -2,14 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHardDrive } from '@fortawesome/free-solid-svg-icons';
 import styles from './SaveImage.module.css';
 
-const SaveImage = () => {
+const SaveImage = ({ handleSaveImage }) => {
   return (
     <div className={styles.tool}>
-      <FontAwesomeIcon
-        className={styles.saveIcon}
-        icon={faHardDrive}
-        title="Save Image File"
-      />
+      <a>
+        <FontAwesomeIcon
+          className={styles.saveIcon}
+          icon={faHardDrive}
+          title="Save Image File"
+          onClick={handleSaveImage}
+        />
+      </a>
     </div>
   );
 };

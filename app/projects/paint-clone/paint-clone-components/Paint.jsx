@@ -47,6 +47,7 @@ const Paint = () => {
     load: false,
     clear: false,
   });
+  const [isDownloadImage, setIsDownloadImage] = useState(false);
 
   // Destructuring
   const { brushIcon, eraserIcon } = isIconClicked;
@@ -66,6 +67,7 @@ const Paint = () => {
       load: false,
       clear: false,
     });
+    setIsDownloadImage(false);
   };
 
   const handleBrushPicker = () => {
@@ -105,6 +107,7 @@ const Paint = () => {
       load: false,
       clear: false,
     });
+    setIsDownloadImage(false);
   };
 
   const handleLocalStorage = (value) => {
@@ -117,6 +120,17 @@ const Paint = () => {
     }
 
     setIsCleared(false);
+    setIsDownloadImage(false);
+  };
+
+  const handleSaveImage = () => {
+    setIsDownloadImage(true);
+    setIsCleared(false);
+    setStorage({
+      save: false,
+      load: false,
+      clear: false,
+    });
   };
 
   return (
@@ -129,6 +143,7 @@ const Paint = () => {
           save={save}
           load={load}
           clear={clear}
+          isDownloadImage={isDownloadImage}
         />
         <DynamicBrush
           handleBrushEraserIcons={handleBrushEraserIcons}
@@ -154,7 +169,7 @@ const Paint = () => {
         />
         <DynamicClear handleClearDrawing={handleClearDrawing} />
         <DynamicLocalStorage handleLocalStorage={handleLocalStorage} />
-        <DynamicSaveImage />
+        <DynamicSaveImage handleSaveImage={handleSaveImage} />
       </div>
       {brushColor && (
         <Canvas
@@ -169,6 +184,8 @@ const Paint = () => {
           load={load}
           clear={clear}
           setStorage={setStorage}
+          isDownloadImage={isDownloadImage}
+          setIsDownloadImage={setIsDownloadImage}
         />
       )}
     </>

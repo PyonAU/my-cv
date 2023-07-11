@@ -1,6 +1,13 @@
 import styles from './ActiveToolDisplay.module.css';
 
-const ActiveToolDisplay = ({ brushIcon, isCleared, save, load, clear }) => {
+const ActiveToolDisplay = ({
+  brushIcon,
+  isCleared,
+  save,
+  load,
+  clear,
+  isDownloadImage,
+}) => {
   const tool = brushIcon ? 'Brush' : 'Eraser';
 
   let text;
@@ -12,12 +19,14 @@ const ActiveToolDisplay = ({ brushIcon, isCleared, save, load, clear }) => {
     text = 'Local Storage Cleared';
   } else if (isCleared) {
     text = 'Canvas Cleared';
+  } else if (isDownloadImage) {
+    text = 'Image File Saved';
   }
 
   return (
     <div>
       <span className={styles.activeTool} title="Active Tool">
-        {save || load || clear || isCleared ? text : tool}
+        {save || load || clear || isCleared || isDownloadImage ? text : tool}
       </span>
     </div>
   );

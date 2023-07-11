@@ -118,6 +118,7 @@ function Canvas(props) {
       load: false,
       clear: false,
     });
+    props.setIsDownloadImage(false);
   };
 
   const drawing = (event) => {
@@ -174,6 +175,16 @@ function Canvas(props) {
   useEffect(() => {
     localStorage.removeItem('canvas');
   }, [props.clear]);
+
+  useEffect(() => {
+    if (props.isDownloadImage) {
+      const url = canvasRef.current.toDataURL('image/jpeg');
+      const link = document.createElement('a');
+      link.download = 'filename.jpeg';
+      link.href = url;
+      link.click();
+    }
+  }, [props.isDownloadImage]);
 
   return (
     <canvas
