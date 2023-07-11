@@ -25,13 +25,11 @@ function Canvas(props) {
       ctx.current.lineWidth = drawnArray[i].size;
       ctx.current.lineCap = 'round';
 
-      if (drawnArray[i].eraser) {
+      if (drawnArray[i].erase) {
         ctx.current.strokeStyle = props.bucketColor;
-        ctx.current.lineWidth = '50';
       } else {
         ctx.current.strokeStyle = drawnArray[i].color;
       }
-
       ctx.current.lineTo(drawnArray[i].x, drawnArray[i].y);
       ctx.current.stroke();
     }
