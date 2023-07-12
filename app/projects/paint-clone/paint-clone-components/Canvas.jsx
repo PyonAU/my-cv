@@ -71,7 +71,7 @@ function Canvas(props) {
 
     if (props.isCleared) {
       setDrawnArray([]);
-    } else {
+    } else if (!props.clear) {
       restoreCanvas();
     }
   }, [props.bucketColor, props.isCleared]);
@@ -166,12 +166,19 @@ function Canvas(props) {
     if (loadSavedDrawing) {
       setDrawnArray(JSON.parse(loadSavedDrawing));
     }
-
-    restoreCanvas();
   }, [props.load]);
 
   useEffect(() => {
-    localStorage.removeItem('canvas');
+    if (props.load) {
+      restoreCanvas();
+    }
+  }, [drawnArray]);
+
+  useEffect(() => {
+    if (props.clear) {
+      localStorage.removeItem('canvas');
+    }
+    setDrawnArray([]);
   }, [props.clear]);
 
   useEffect(() => {
