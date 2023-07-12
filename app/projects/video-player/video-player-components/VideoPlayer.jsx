@@ -1,3 +1,4 @@
+import PlayPause from './PlayPause';
 import styles from './VideoPlayer.module.css';
 
 const VideoPlayer = () => {
@@ -12,7 +13,7 @@ const VideoPlayer = () => {
           <div className={styles.controlGroup}>
             {/* Left Controls */}
             <div className={styles.leftControls}>
-              <p>Play</p>
+              <PlayPause />
               <p>Volume</p>
             </div>
 
