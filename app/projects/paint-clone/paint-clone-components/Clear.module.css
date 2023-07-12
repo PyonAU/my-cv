@@ -1,0 +1,26 @@
+.tool {
+  position: relative;
+  top: 3px;
+}
+
+.tool:not(:first-child) {
+  margin-left: 8px;
+}
+
+.clearIcon {
+  font-size: 25px;
+  position: relative;
+  top: 10px;
+  background-color: rgb(82, 82, 82);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  width: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.clearIcon:hover {
+  filter: brightness(90%);
+  color: red;
+}

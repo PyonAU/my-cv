@@ -1,12 +1,22 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
-import Header from './spock-rock-components/Header';
-import Player from './spock-rock-components/Player';
 import Result from './spock-rock-components/Result';
-import Reset from './spock-rock-components/Reset';
 import { startConfetti, stopConfetti, removeConfetti } from '../lib/spock-rock-game/confetti';
 import styles from './SpockRockGame.module.css';
+
+const DynamicHeader = dynamic(() => import('./spock-rock-components/Header'), {
+  ssr: false,
+});
+
+const DynamicPlayer = dynamic(() => import('./spock-rock-components/Player'), {
+  ssr: false,
+});
+
+const DynamicReset = dynamic(() => import('./spock-rock-components/Reset'), {
+  ssr: false,
+});
 
 const gameLogic = {
   Rock: { name: 'Rock', defeats: ['Scissors', 'Lizard'] },
@@ -109,15 +119,15 @@ const SpockRockGame = () => {
         `}
       </style>
       <div className={styles.gameContainer}>
-        <Header />
-        <Player
+        <DynamicHeader />
+        <DynamicPlayer
           name="You"
           score={playerScore}
           choice={playerChoice}
           handlePlayerClick={handlePlayerClick}
         />
-        <Player name="Computer" score={computerScore} choice={computerChoice} />
-        <Reset 
+        <DynamicPlayer name="Computer" score={computerScore} choice={computerChoice} />
+        <DynamicReset 
           handleReset={handleReset}
         />
         <Result 
