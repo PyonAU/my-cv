@@ -1,0 +1,19 @@
+.volumeIcon {
+  cursor: pointer;
+}
+
+.volumeRange {
+  height: 8px;
+  width: 100px;
+  border-radius: 10px;
+  position: relative;
+  top: -30px;
+  left: 50px;
+  cursor: pointer;
+}
+
+.volumeIcons {
+  color: var(--font-color);
+  font-size: 35px;
+  margin-right: 25px;
+}
