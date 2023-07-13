@@ -1,0 +1,9 @@
+.fullscreen {
+  cursor: pointer;
+}
+
+.expand {
+  color: var(--font-color);
+  font-size: 35px;
+  margin-right: 25px;
+}

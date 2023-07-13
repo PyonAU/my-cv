@@ -2,6 +2,7 @@ import PlayPause from './PlayPause';
 import Volume from './Volume';
 import PlaybackSpeed from './PlaybackSpeed';
 import TimeDuration from './TimeDuration';
+import Fullscreen from './Fullscreen';
 import styles from './VideoPlayer.module.css';
 
 const VideoPlayer = () => {
@@ -24,7 +25,7 @@ const VideoPlayer = () => {
             <div className={styles.rightControls}>
               <PlaybackSpeed />
               <TimeDuration />
-              <p>Full Screen</p>
+              <Fullscreen />
             </div>
           </div>
         </div>
