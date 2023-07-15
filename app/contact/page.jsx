@@ -16,9 +16,9 @@ const ContactPage = () => {
           }
         `}
       </style>
-      <p className={styles.container}>
+      <div className={styles.container}>
         <h1 className={styles.title}>TO GET IN TOUCH</h1>
-      </p>
+      </div>
       <div className={styles.container}>
         <p className={styles.email}>aya@iamserious.com</p>
       </div>

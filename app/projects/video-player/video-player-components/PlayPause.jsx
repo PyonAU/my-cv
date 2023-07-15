@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBackward } from '@fortawesome/free-solid-svg-icons';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { faPause } from '@fortawesome/free-solid-svg-icons';
-import { faForward } from '@fortawesome/free-solid-svg-icons';
+import { IconButton } from '@mui/material';
+import { FastRewind } from '@mui/icons-material';
+import { FastForwardSharp } from '@mui/icons-material';
+import { PlayArrowSharp } from '@mui/icons-material';
+import { PauseSharp } from '@mui/icons-material';
 import styles from './PlayPause.module.css';
 
 const PlayPause = ({
@@ -13,24 +13,33 @@ const PlayPause = ({
 }) => {
   return (
     <div className={styles.playControls}>
-      <FontAwesomeIcon
+      <IconButton
         className={styles.backward}
-        icon={faBackward}
-        title="Rewind"
+        title="rewind"
         onClick={handleRewind}
-      />
-      <FontAwesomeIcon
+      >
+        <FastRewind fontSize="large" style={{ color: 'white' }} />
+      </IconButton>
+
+      <IconButton
         className={styles.play}
-        icon={playing ? faPause : faPlay}
         title={playing ? 'Pause' : 'Play'}
         onClick={handlePlayPause}
-      />
-      <FontAwesomeIcon
+      >
+        {playing ? (
+          <PauseSharp fontSize="large" style={{ color: 'white' }} />
+        ) : (
+          <PlayArrowSharp fontSize="large" style={{ color: 'white' }} />
+        )}
+      </IconButton>
+
+      <IconButton
         className={styles.forward}
-        icon={faForward}
         title="Fast Forward"
         onClick={handleFastForward}
-      />
+      >
+        <FastForwardSharp fontSize="large" style={{ color: 'white' }} />
+      </IconButton>
     </div>
   );
 };

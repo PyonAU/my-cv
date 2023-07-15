@@ -1,18 +1,15 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExpand } from '@fortawesome/free-solid-svg-icons';
+import { IconButton } from '@mui/material';
+import { Fullscreen } from '@mui/icons-material';
 import styles from './Fullscreen.module.css';
 
-const Fullscreen = ({ toggleFullScreen }) => {
+const FullScreen = ({ toggleFullScreen }) => {
   return (
     <div className={styles.fullscreen}>
-      <FontAwesomeIcon
-        className={styles.expand}
-        icon={faExpand}
-        title="Fullscreen"
-        onClick={toggleFullScreen}
-      />
+      <IconButton className={styles.expand} onClick={toggleFullScreen}>
+        <Fullscreen fontSize="large" />
+      </IconButton>
     </div>
   );
 };
 
-export default Fullscreen;
+export default FullScreen;

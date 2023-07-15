@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
-import { faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
+import { IconButton } from '@mui/material';
+import { VolumeUp } from '@mui/icons-material';
+import { VolumeOff } from '@mui/icons-material';
 import Slider from '@mui/material/Slider';
 import styles from './Volume.module.css';
 
@@ -14,12 +14,17 @@ const Volume = ({
   return (
     <div className={styles.volume}>
       <div className={styles.volumeIcon}>
-        <FontAwesomeIcon
+        <IconButton
           className={styles.volumeIcons}
-          icon={muted ? faVolumeXmark : faVolumeHigh}
           title={muted ? 'Mute' : 'Volume'}
           onClick={handleMute}
-        />
+        >
+          {muted ? (
+            <VolumeOff fontSize="large" style={{ color: 'white' }} />
+          ) : (
+            <VolumeUp fontSize="large" style={{ color: 'white' }} />
+          )}
+        </IconButton>
       </div>
 
       <div className={styles.volumeRange}>
