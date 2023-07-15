@@ -27,7 +27,7 @@ Table of Contents
 
 ---
 
-## About The Application
+## About My CV App
 
 This application aims to consolidate all the projects I have built using Next.js, specifically leveraging the latest version, Next.js 13, in order to showcase my portfolio and enhance my skills and knowledge.
 
@@ -51,10 +51,28 @@ I am highly motivated to acquire new skills, expand my knowledge, and continue a
 
 ### Installation
 
+- Clone the repo:
+  ```
+  https://github.com/PyonAU/my-cv.git
+  ```
 - Install the dependencies with:
   ```
   npm install
   ```
+
+#### Installing Joke Teller App
+
+To successfully install the Joke Teller App, you will need API Key from Voice RSS.
+
+- Get an API Key for Joke Teller App at [https://www.voicerss.org/api/](https://www.voicerss.org/api/)
+
+- Enter your API Key in a `.env` file created in the root folder.
+  ```bash
+  VOICERSS_KEY=<YOUR API KEY>
+  ```
+
+### Run the Application
+
 - Run the development server with:
   ```
   npm run dev
