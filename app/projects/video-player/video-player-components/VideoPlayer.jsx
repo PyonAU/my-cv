@@ -134,6 +134,10 @@ const VideoPlayer = () => {
     setController({ ...controller, playbackRate: rate });
   };
 
+  const handleEnded = () => {
+    setController({ ...controller, playing: false });
+  };
+
   return (
     <div className={styles.player}>
       {isClient ? (
@@ -147,6 +151,7 @@ const VideoPlayer = () => {
           volume={volume}
           playbackRate={playbackRate}
           onProgress={handleProgress}
+          onEnded={handleEnded}
         />
       ) : (
         'Loading...'
