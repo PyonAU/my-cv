@@ -1,3 +1,4 @@
+import ProgressBar from './ProgressBar';
 import PlayPause from './PlayPause';
 import Volume from './Volume';
 import PlaybackSpeed from './PlaybackSpeed';
@@ -12,7 +13,7 @@ const VideoPlayer = () => {
       <div className={styles.showControls}>
         {/* Control Container */}
         <div className={styles.controlsContainer}>
-          <p>Progress Bar</p>
+          <ProgressBar />
           {/* Control Group */}
           <div className={styles.controlGroup}>
             {/* Left Controls */}

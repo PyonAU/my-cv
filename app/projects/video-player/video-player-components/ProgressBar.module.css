@@ -1,0 +1,9 @@
+.progressRange {
+  height: 8px;
+  width: calc(100% - 30px);
+  margin: auto;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  cursor: pointer;
+}
