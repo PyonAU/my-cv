@@ -214,7 +214,7 @@ This is a Kanban Board designed to help users keep track of their tasks. The boa
 
 ### Joke Teller App
 
-> The vanilla JavaScript version: [joke-teller-v1-javascript-study](https://github.com/PyonAU/joke-teller-v1-javascript-study).
+> The vanilla JavaScript version: The original version of the code leads to the leakage of the API key on the front end. As it was used solely for educational purposes, the code shall remain private.
 
 **Usage**
 
@@ -223,7 +223,7 @@ The application is a joke teller, where users can click the "Tell Me A Joke" but
 **Key features**
 
 - Utilize an animated robot GIF from [giphy.com](https://giphy.com/) as the background.
-- Implement a joke API to fetch jokes.
+- Implement a joke API to fetch jokes via a proxy to ensure the security of the API Key.
 - Pass the fetched jokes to a text-to-speech API for audio output.
 
 <p align="right"><a href="#my-cv-app">back to top</a></p>
