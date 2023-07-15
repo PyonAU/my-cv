@@ -10,11 +10,32 @@ import Fullscreen from './Fullscreen';
 import styles from './VideoPlayer.module.css';
 
 const VideoPlayer = () => {
+  // State
   const [isClient, setIsClient] = useState(false);
+  const [controller, setController] = useState({
+    playing: false,
+    muted: false,
+    volume: 0.5,
+    playbackRate: 1.0,
+    played: 0,
+    seeking: false,
+  });
 
+  // Destructuring state value
+  const { playing, muted, volume, playbackRate, played, seeking } = controller;
+
+  // Prevent from SSR
   useEffect(() => {
     setIsClient(true);
   });
+
+  // Toggle between the state
+  const handlePlayPause = () => {
+    setController((prevState) => ({
+      ...controller,
+      playing: !prevState.playing,
+    }));
+  };
 
   return (
     <div className={styles.player}>
@@ -23,6 +44,8 @@ const VideoPlayer = () => {
           width="100%"
           height="auto"
           url="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"
+          playing={playing}
+          muted={muted}
         />
       ) : (
         'Loading...'
@@ -37,7 +60,7 @@ const VideoPlayer = () => {
           <div className={styles.controlGroup}>
             {/* Left Controls */}
             <div className={styles.leftControls}>
-              <PlayPause />
+              <PlayPause handlePlayPause={handlePlayPause} playing={playing} />
               <Volume />
             </div>
 
