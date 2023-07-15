@@ -1,17 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
-// import { faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
+import { faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
 import Slider from '@mui/material/Slider';
 import styles from './Volume.module.css';
 
-const Volume = () => {
+const Volume = ({ handleMute, muted }) => {
   return (
     <div className={styles.volume}>
       <div className={styles.volumeIcon}>
         <FontAwesomeIcon
           className={styles.volumeIcons}
-          icon={faVolumeHigh}
-          title="Volume"
+          icon={muted ? faVolumeXmark : faVolumeHigh}
+          title={muted ? 'Mute' : 'Volume'}
+          onClick={handleMute}
         />
       </div>
 

@@ -108,6 +108,11 @@ const VideoPlayer = () => {
     );
   };
 
+  // Toggle the mute button
+  const handleMute = () => {
+    setController((prevState) => ({ ...controller, muted: !prevState.muted }));
+  };
+
   return (
     <div className={styles.player}>
       {isClient ? (
@@ -144,7 +149,7 @@ const VideoPlayer = () => {
                 handleRewind={handleRewind}
                 handleFastForward={handleFastForward}
               />
-              <Volume />
+              <Volume handleMute={handleMute} muted={muted} />
             </div>
 
             {/* Right Controls */}
