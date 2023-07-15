@@ -1,3 +1,6 @@
+// import dynamic from 'next/dynamic';
+import { useState, useEffect } from 'react';
+import ReactPlayer from 'react-player';
 import ProgressBar from './ProgressBar';
 import PlayPause from './PlayPause';
 import Volume from './Volume';
@@ -7,8 +10,24 @@ import Fullscreen from './Fullscreen';
 import styles from './VideoPlayer.module.css';
 
 const VideoPlayer = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  });
+
   return (
     <div className={styles.player}>
+      {isClient ? (
+        <ReactPlayer
+          width="100%"
+          height="auto"
+          url="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"
+        />
+      ) : (
+        'Loading...'
+      )}
+
       {/* Show Controls */}
       <div className={styles.showControls}>
         {/* Control Container */}
