@@ -30,7 +30,7 @@ const LocalStorage = ({ handleLocalStorage }) => {
       {/* Clear Local Storage */}
       <div className={styles.tool}>
         <FontAwesomeIcon
-          className={styles.localStorageIcon}
+          className={styles.localStorageClearIcon}
           icon={faTrashCan}
           title="Clear Local Storage"
           onClick={() => handleLocalStorage('clear')}

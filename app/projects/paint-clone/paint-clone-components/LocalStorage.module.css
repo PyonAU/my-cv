@@ -7,7 +7,8 @@
   margin-left: 8px;
 }
 
-.localStorageIcon {
+.localStorageIcon,
+.localStorageClearIcon {
   font-size: 25px;
   position: relative;
   top: 10px;
@@ -22,4 +23,9 @@
 
 .localStorageIcon:hover {
   filter: brightness(90%);
+}
+
+.localStorageClearIcon:hover {
+  filter: brightness(90%);
+  color: red;
 }
