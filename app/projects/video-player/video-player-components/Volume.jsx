@@ -4,7 +4,13 @@ import { faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
 import Slider from '@mui/material/Slider';
 import styles from './Volume.module.css';
 
-const Volume = ({ handleMute, muted }) => {
+const Volume = ({
+  handleMute,
+  muted,
+  volume,
+  handleVolumeChange,
+  handleVolumeSeekUp,
+}) => {
   return (
     <div className={styles.volume}>
       <div className={styles.volumeIcon}>
@@ -17,7 +23,13 @@ const Volume = ({ handleMute, muted }) => {
       </div>
 
       <div className={styles.volumeRange}>
-        <Slider min={0} max={100} />
+        <Slider
+          min={0}
+          max={100}
+          volume={volume * 100}
+          onChange={handleVolumeChange}
+          onChangeCommitted={handleVolumeSeekUp}
+        />
       </div>
     </div>
   );

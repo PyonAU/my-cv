@@ -113,6 +113,23 @@ const VideoPlayer = () => {
     setController((prevState) => ({ ...controller, muted: !prevState.muted }));
   };
 
+  // Keeping the values of the volume and mute properties
+  const handleVolumeChange = (e, newValue) => {
+    setController({
+      ...controller,
+      volume: parseFloat(newValue / 100),
+      muted: newValue === 0 ? true : false,
+    });
+  };
+
+  const handleVolumeSeekUp = (e, newValue) => {
+    setController({
+      ...controller,
+      volume: parseFloat(newValue / 100),
+      muted: newValue === 0 ? true : false,
+    });
+  };
+
   return (
     <div className={styles.player}>
       {isClient ? (
@@ -123,6 +140,7 @@ const VideoPlayer = () => {
           url="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"
           playing={playing}
           muted={muted}
+          volume={volume}
           onProgress={handleProgress}
         />
       ) : (
@@ -149,7 +167,13 @@ const VideoPlayer = () => {
                 handleRewind={handleRewind}
                 handleFastForward={handleFastForward}
               />
-              <Volume handleMute={handleMute} muted={muted} />
+              <Volume
+                handleMute={handleMute}
+                muted={muted}
+                volume={volume}
+                handleVolumeChange={handleVolumeChange}
+                handleVolumeSeekUp={handleVolumeSeekUp}
+              />
             </div>
 
             {/* Right Controls */}
