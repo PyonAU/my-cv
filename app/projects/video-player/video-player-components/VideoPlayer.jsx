@@ -9,6 +9,21 @@ import TimeDuration from './TimeDuration';
 import Fullscreen from './Fullscreen';
 import styles from './VideoPlayer.module.css';
 
+const format = (seconds) => {
+  if (isNaN(seconds)) {
+    return '00:00';
+  }
+
+  const date = new Date(seconds * 1000);
+  const hh = date.getUTCHours();
+  const mm = date.getUTCMinutes();
+  const ss = date.getUTCSeconds().toString().padStart(2, '0');
+  if (hh) {
+    return `${hh}:${mm.toString().padStart(2, '0')}:${ss}`;
+  }
+  return `${mm}:${ss}`;
+};
+
 const VideoPlayer = () => {
   // State
   const [isClient, setIsClient] = useState(false);
@@ -20,6 +35,7 @@ const VideoPlayer = () => {
     played: 0,
     seeking: false,
   });
+  const [timeDisplayFormat, setTimeDisplayFormat] = useState('normal');
 
   // Destructuring state value
   const { playing, muted, volume, playbackRate, played, seeking } = controller;
@@ -31,6 +47,19 @@ const VideoPlayer = () => {
   useEffect(() => {
     setIsClient(true);
   });
+
+  const currentTime = playerRef.current
+    ? playerRef.current.getCurrentTime()
+    : '00:00';
+  const duration = playerRef.current
+    ? playerRef.current.getDuration()
+    : '00:00';
+
+  const elapsedTime =
+    timeDisplayFormat === 'normal'
+      ? format(currentTime)
+      : `-${format(duration - currentTime)}`;
+  const totalDuration = format(duration);
 
   // Toggle between the state
   const handlePlayPause = () => {
@@ -72,6 +101,13 @@ const VideoPlayer = () => {
     playerRef.current.seekTo(newValue / 100);
   };
 
+  // Switch between counting up or down
+  const handleChangeDisplayFormat = () => {
+    setTimeDisplayFormat(
+      timeDisplayFormat === 'normal' ? 'remaining' : 'normal'
+    );
+  };
+
   return (
     <div className={styles.player}>
       {isClient ? (
@@ -82,7 +118,7 @@ const VideoPlayer = () => {
           url="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"
           playing={playing}
           muted={muted}
-          handleProgress={handleProgress}
+          onProgress={handleProgress}
         />
       ) : (
         'Loading...'
@@ -114,7 +150,11 @@ const VideoPlayer = () => {
             {/* Right Controls */}
             <div className={styles.rightControls}>
               <PlaybackSpeed />
-              <TimeDuration />
+              <TimeDuration
+                elapsedTime={elapsedTime}
+                totalDuration={totalDuration}
+                handleChangeDisplayFormat={handleChangeDisplayFormat}
+              />
               <Fullscreen />
             </div>
           </div>
