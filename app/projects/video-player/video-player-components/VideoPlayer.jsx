@@ -1,5 +1,5 @@
 // import dynamic from 'next/dynamic';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import ProgressBar from './ProgressBar';
 import PlayPause from './PlayPause';
@@ -24,6 +24,9 @@ const VideoPlayer = () => {
   // Destructuring state value
   const { playing, muted, volume, playbackRate, played, seeking } = controller;
 
+  // Ref
+  const playerRef = useRef(null);
+
   // Prevent from SSR
   useEffect(() => {
     setIsClient(true);
@@ -37,10 +40,21 @@ const VideoPlayer = () => {
     }));
   };
 
+  const handleRewind = () => {
+    // Rewind 2s back
+    playerRef.current.seekTo(playerRef.current.getCurrentTime() - 2);
+  };
+
+  const handleFastForward = () => {
+    // Rewind 2s forward
+    playerRef.current.seekTo(playerRef.current.getCurrentTime() + 2);
+  };
+
   return (
     <div className={styles.player}>
       {isClient ? (
         <ReactPlayer
+          ref={playerRef}
           width="100%"
           height="auto"
           url="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"
@@ -60,7 +74,12 @@ const VideoPlayer = () => {
           <div className={styles.controlGroup}>
             {/* Left Controls */}
             <div className={styles.leftControls}>
-              <PlayPause handlePlayPause={handlePlayPause} playing={playing} />
+              <PlayPause
+                handlePlayPause={handlePlayPause}
+                playing={playing}
+                handleRewind={handleRewind}
+                handleFastForward={handleFastForward}
+              />
               <Volume />
             </div>
 
