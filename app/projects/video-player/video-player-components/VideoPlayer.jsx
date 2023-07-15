@@ -50,6 +50,28 @@ const VideoPlayer = () => {
     playerRef.current.seekTo(playerRef.current.getCurrentTime() + 2);
   };
 
+  const handleProgress = (changeState) => {
+    if (!seeking) {
+      setController({ ...controller, ...changeState });
+    }
+  };
+
+  // Seek a particular time of the video
+  const handleSeekChange = (e, newValue) => {
+    setController({ ...controller, played: parseFloat(newValue / 100) });
+  };
+
+  // This function gets triggered when the mousedown event is activated
+  const handleSeekMouseDown = (e) => {
+    setController({ ...controller, seeking: true });
+  };
+
+  // This function gets triggered when the mouseup event is activated
+  const handleSeekMouseUp = (e, newValue) => {
+    setController({ ...controller, seeking: false });
+    playerRef.current.seekTo(newValue / 100);
+  };
+
   return (
     <div className={styles.player}>
       {isClient ? (
@@ -60,6 +82,7 @@ const VideoPlayer = () => {
           url="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"
           playing={playing}
           muted={muted}
+          handleProgress={handleProgress}
         />
       ) : (
         'Loading...'
@@ -69,7 +92,12 @@ const VideoPlayer = () => {
       <div className={styles.showControls}>
         {/* Control Container */}
         <div className={styles.controlsContainer}>
-          <ProgressBar />
+          <ProgressBar
+            played={played}
+            handleSeekChange={handleSeekChange}
+            handleSeekMouseUp={handleSeekMouseUp}
+            handleSeekMouseDown={handleSeekMouseDown}
+          />
           {/* Control Group */}
           <div className={styles.controlGroup}>
             {/* Left Controls */}
