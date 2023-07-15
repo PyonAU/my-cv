@@ -1,14 +1,23 @@
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import ProgressBar from './ProgressBar';
-import PlayPause from './PlayPause';
-import Volume from './Volume';
 import PlaybackSpeed from './PlaybackSpeed';
 import TimeDuration from './TimeDuration';
-import Fullscreen from './Fullscreen';
 import screenfull from 'screenfull';
 import styles from './VideoPlayer.module.css';
+
+const DynamicPlayPause = dynamic(() => import('./PlayPause'), {
+  ssr: false,
+});
+
+const DynamicVolume = dynamic(() => import('./Volume'), {
+  ssr: false,
+});
+
+const DynamicFullscreen = dynamic(() => import('./Fullscreen'), {
+  ssr: false,
+});
 
 const format = (seconds) => {
   if (isNaN(seconds)) {
@@ -177,13 +186,13 @@ const VideoPlayer = () => {
           <div className={styles.controlGroup}>
             {/* Left Controls */}
             <div className={styles.leftControls}>
-              <PlayPause
+              <DynamicPlayPause
                 handlePlayPause={handlePlayPause}
                 playing={playing}
                 handleRewind={handleRewind}
                 handleFastForward={handleFastForward}
               />
-              <Volume
+              <DynamicVolume
                 handleMute={handleMute}
                 muted={muted}
                 volume={volume}
@@ -202,7 +211,7 @@ const VideoPlayer = () => {
                 totalDuration={totalDuration}
                 handleChangeDisplayFormat={handleChangeDisplayFormat}
               />
-              <Fullscreen toggleFullScreen={toggleFullScreen} />
+              <DynamicFullscreen toggleFullScreen={toggleFullScreen} />
             </div>
           </div>
         </div>
