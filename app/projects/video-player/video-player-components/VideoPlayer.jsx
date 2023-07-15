@@ -7,6 +7,7 @@ import Volume from './Volume';
 import PlaybackSpeed from './PlaybackSpeed';
 import TimeDuration from './TimeDuration';
 import Fullscreen from './Fullscreen';
+import screenfull from 'screenfull';
 import styles from './VideoPlayer.module.css';
 
 const format = (seconds) => {
@@ -42,6 +43,7 @@ const VideoPlayer = () => {
 
   // Ref
   const playerRef = useRef(null);
+  const playerContainerRef = useRef(null);
 
   // Prevent from SSR
   useEffect(() => {
@@ -138,8 +140,12 @@ const VideoPlayer = () => {
     setController({ ...controller, playing: false });
   };
 
+  const toggleFullScreen = () => {
+    screenfull.toggle(playerContainerRef.current);
+  };
+
   return (
-    <div className={styles.player}>
+    <div ref={playerContainerRef} className={styles.player}>
       {isClient ? (
         <ReactPlayer
           ref={playerRef}
@@ -196,7 +202,7 @@ const VideoPlayer = () => {
                 totalDuration={totalDuration}
                 handleChangeDisplayFormat={handleChangeDisplayFormat}
               />
-              <Fullscreen />
+              <Fullscreen toggleFullScreen={toggleFullScreen} />
             </div>
           </div>
         </div>
