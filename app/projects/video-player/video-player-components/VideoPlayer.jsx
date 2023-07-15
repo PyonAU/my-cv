@@ -130,6 +130,10 @@ const VideoPlayer = () => {
     });
   };
 
+  const handlePlaybackRateChange = (rate) => {
+    setController({ ...controller, playbackRate: rate });
+  };
+
   return (
     <div className={styles.player}>
       {isClient ? (
@@ -141,6 +145,7 @@ const VideoPlayer = () => {
           playing={playing}
           muted={muted}
           volume={volume}
+          playbackRate={playbackRate}
           onProgress={handleProgress}
         />
       ) : (
@@ -178,7 +183,9 @@ const VideoPlayer = () => {
 
             {/* Right Controls */}
             <div className={styles.rightControls}>
-              <PlaybackSpeed />
+              <PlaybackSpeed
+                handlePlaybackRateChange={handlePlaybackRateChange}
+              />
               <TimeDuration
                 elapsedTime={elapsedTime}
                 totalDuration={totalDuration}

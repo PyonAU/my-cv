@@ -23,10 +23,16 @@ const speed = [
   },
 ];
 
-const PlaybackSpeed = () => {
+const PlaybackSpeed = ({ handlePlaybackRateChange }) => {
   return (
     <div className={styles.speed} title="Playback Speed">
-      <select defaultValue="1" className={styles.selects}>
+      <select
+        defaultValue="1"
+        className={styles.selects}
+        onClick={(event) =>
+          handlePlaybackRateChange(Number(event.target.value))
+        }
+      >
         {speed.map(({ label, value }) => (
           <option key={value} value={value} className={styles.options}>
             {label}
