@@ -18,6 +18,13 @@
   font-size: 1.5rem;
 }
 
+.contentTitle {
+  color: var(--navColor3);
+  margin-left: 22px;
+  margin: 20px 0 0 22px;
+  text-decoration: underline;
+}
+
 .lists {
   color: var(--navColor3);
 }

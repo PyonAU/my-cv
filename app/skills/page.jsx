@@ -1,6 +1,6 @@
 'use client';
 
-import { mySkillsTexts } from '@/lib/text-data.js';
+import { techTexts, customerServiceTexts } from '@/lib/text-data.js';
 import styles from './skills.module.css';
 
 const SkillsPage = () => {
@@ -18,8 +18,21 @@ const SkillsPage = () => {
         <h1 className={styles.title}>MY SKILLS</h1>
       </div>
       <div className={styles.listContainer}>
+        <h5 className={styles.contentTitle}>IT Skills</h5>
         <ul className={styles.lists}>
-          {mySkillsTexts.map((list, index) => <li className={styles.list} key={`list${index}`}>{list}</li>)}
+          {techTexts.map((list, index) => (
+            <li className={styles.list} key={`list${index}`}>
+              {list}
+            </li>
+          ))}
+        </ul>
+        <h5 className={styles.contentTitle}>Other Capabilities</h5>
+        <ul className={styles.lists}>
+          {customerServiceTexts.map((list, index) => (
+            <li className={styles.list} key={`list${index}`}>
+              {list}
+            </li>
+          ))}
         </ul>
       </div>
     </>
