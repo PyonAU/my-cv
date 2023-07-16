@@ -1,0 +1,28 @@
+.speed {
+  margin-right: 15px;
+}
+
+.selects,
+.options {
+  cursor: pointer;
+}
+
+.selects {
+  background: transparent;
+  color: var(--font-color);
+  border: none;
+  font-size: 18px;
+  position: relative;
+  top: 14px;
+  border-radius: 5px;
+}
+
+.selects:focus {
+  outline: none;
+}
+
+.selects > .options {
+  background: rgba(0, 0, 0, 0.9);
+  border: none;
+  font-size: 14px;
+}
