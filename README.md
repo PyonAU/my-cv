@@ -2,7 +2,7 @@
 
 Table of Contents
 
-1. [About The Project](#about-the-project)
+1. [About My CV App](#about-my-cv-app)
 
    - [Built With](#built-with)
 
@@ -10,6 +10,7 @@ Table of Contents
 
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
+   - [Run the Application](#run-the-application)
 
 3. [Overview of My Projects](#overview-of-my-projects)
 
@@ -257,7 +258,7 @@ This is a custom video player. When hovering near the bottom, the control bar ap
   - [x] Custom Countdown
   - [x] Drag and Drop App
   - [x] Joke Teller App
-  - [ ] Video Player App
+  - [x] Video Player App
   - [ ] Calculator
 - [ ] Add testing files to all my projects
   - [ ] Bookmark App
