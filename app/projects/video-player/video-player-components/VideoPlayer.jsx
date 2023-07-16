@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import ProgressBar from './ProgressBar';
@@ -154,69 +155,73 @@ const VideoPlayer = () => {
   };
 
   return (
-    <div ref={playerContainerRef} className={styles.player}>
+    <>
       {isClient ? (
-        <ReactPlayer
-          ref={playerRef}
-          width="100%"
-          height="auto"
-          url="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"
-          playing={playing}
-          muted={muted}
-          volume={volume}
-          playbackRate={playbackRate}
-          onProgress={handleProgress}
-          onEnded={handleEnded}
-        />
-      ) : (
-        'Loading...'
-      )}
-
-      {/* Show Controls */}
-      <div className={styles.showControls}>
-        {/* Control Container */}
-        <div className={styles.controlsContainer}>
-          <ProgressBar
-            played={played}
-            handleSeekChange={handleSeekChange}
-            handleSeekMouseUp={handleSeekMouseUp}
-            handleSeekMouseDown={handleSeekMouseDown}
+        <div ref={playerContainerRef} className={styles.player}>
+          <ReactPlayer
+            ref={playerRef}
+            width="100%"
+            height="auto"
+            url="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"
+            playing={playing}
+            muted={muted}
+            volume={volume}
+            playbackRate={playbackRate}
+            onProgress={handleProgress}
+            onEnded={handleEnded}
           />
-          {/* Control Group */}
-          <div className={styles.controlGroup}>
-            {/* Left Controls */}
-            <div className={styles.leftControls}>
-              <DynamicPlayPause
-                handlePlayPause={handlePlayPause}
-                playing={playing}
-                handleRewind={handleRewind}
-                handleFastForward={handleFastForward}
-              />
-              <DynamicVolume
-                handleMute={handleMute}
-                muted={muted}
-                volume={volume}
-                handleVolumeChange={handleVolumeChange}
-                handleVolumeSeekUp={handleVolumeSeekUp}
-              />
-            </div>
 
-            {/* Right Controls */}
-            <div className={styles.rightControls}>
-              <PlaybackSpeed
-                handlePlaybackRateChange={handlePlaybackRateChange}
+          {/* Show Controls */}
+          <div className={styles.showControls}>
+            {/* Control Container */}
+            <div className={styles.controlsContainer}>
+              <ProgressBar
+                played={played}
+                handleSeekChange={handleSeekChange}
+                handleSeekMouseUp={handleSeekMouseUp}
+                handleSeekMouseDown={handleSeekMouseDown}
               />
-              <TimeDuration
-                elapsedTime={elapsedTime}
-                totalDuration={totalDuration}
-                handleChangeDisplayFormat={handleChangeDisplayFormat}
-              />
-              <DynamicFullscreen toggleFullScreen={toggleFullScreen} />
+              {/* Control Group */}
+              <div className={styles.controlGroup}>
+                {/* Left Controls */}
+                <div className={styles.leftControls}>
+                  <DynamicPlayPause
+                    handlePlayPause={handlePlayPause}
+                    playing={playing}
+                    handleRewind={handleRewind}
+                    handleFastForward={handleFastForward}
+                  />
+                  <DynamicVolume
+                    handleMute={handleMute}
+                    muted={muted}
+                    volume={volume}
+                    handleVolumeChange={handleVolumeChange}
+                    handleVolumeSeekUp={handleVolumeSeekUp}
+                  />
+                </div>
+
+                {/* Right Controls */}
+                <div className={styles.rightControls}>
+                  <PlaybackSpeed
+                    handlePlaybackRateChange={handlePlaybackRateChange}
+                  />
+                  <TimeDuration
+                    elapsedTime={elapsedTime}
+                    totalDuration={totalDuration}
+                    handleChangeDisplayFormat={handleChangeDisplayFormat}
+                  />
+                  <DynamicFullscreen toggleFullScreen={toggleFullScreen} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div className={styles.loading}>
+          <Image width={150} height={150} src="/images/loading.svg" alt="" />
+        </div>
+      )}
+    </>
   );
 };
 
