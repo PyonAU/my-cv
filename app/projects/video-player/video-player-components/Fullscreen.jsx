@@ -4,9 +4,9 @@ import styles from './Fullscreen.module.css';
 
 const FullScreen = ({ toggleFullScreen }) => {
   return (
-    <div className={styles.fullscreen}>
+    <div>
       <IconButton className={styles.expand} onClick={toggleFullScreen}>
-        <Fullscreen fontSize="large" />
+        <Fullscreen fontSize="large" className={styles.fullscreen} />
       </IconButton>
     </div>
   );
