@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-
 .gitHubLink {
   position: absolute;
   z-index: 2;
@@ -11,12 +10,13 @@
   padding-bottom: 5px;
   color: var(--primaryColor);
   border-bottom: 1px solid var(--primaryColor);
-  font-family:'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif;
   letter-spacing: 2px;
 }
 
 .loading {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-
