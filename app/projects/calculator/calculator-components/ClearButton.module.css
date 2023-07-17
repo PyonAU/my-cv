@@ -1,0 +1,22 @@
+.clear {
+  min-height: 50px;
+  font-size: 20px;
+  font-weight: 100;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: rgb(182, 25, 130);
+  color: white;
+}
+
+.clear:active {
+  transform: translateY(1px);
+}
+
+.clear:focus {
+  outline: none;
+}
+
+.clear:hover {
+  filter: brightness(90%);
+}

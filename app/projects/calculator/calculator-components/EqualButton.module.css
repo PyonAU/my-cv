@@ -1,0 +1,23 @@
+.equalSign {
+  min-height: 50px;
+  font-size: 20px;
+  font-weight: 100;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  grid-column: -2;
+  grid-row: 3 / span 3;
+  background: rgb(206, 93, 251);
+}
+
+.equalSign:hover {
+  filter: brightness(110%);
+}
+
+.equalSign:active {
+  transform: translateY(1px);
+}
+
+.equalSign:focus {
+  outline: none;
+}
