@@ -14,11 +14,31 @@ const NumberProvider = ({ children }) => {
     }
   };
 
+  const handleStoredValue = () => {
+    setStoredNumber(number);
+    setNumber('');
+  };
+
+  const handleClearValue = () => {
+    setNumber('');
+    setStoredNumber('');
+    setFunctionType('');
+  };
+
+  const handleBackButton = () => {
+    if (number !== '') {
+      const deleteNumber = number.slice(0, number.length - 1);
+      setNumber(deleteNumber);
+    }
+  };
+
   return (
     <NumberContext.Provider
       value={{
         number,
         handleDisplayValue,
+        handleClearValue,
+        handleBackButton,
       }}
     >
       {children}
