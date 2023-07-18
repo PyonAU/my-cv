@@ -1,6 +1,6 @@
 import Display from './Display';
 import NumberButtons from './NumberButtons';
-import FunctionButtons from './FunctionButtons';
+import OperatorButtons from './OperatorButtons';
 import ClearButton from './ClearButton';
 import BackButton from './BackButton';
 import EqualButton from './EqualButton';
@@ -15,10 +15,10 @@ const Calculator = () => {
           <Display />
           {/* Buttons */}
           <div className={styles.calculatorButtons}>
-            <FunctionButtons buttonValue="+" />
-            <FunctionButtons buttonValue="-" />
-            <FunctionButtons buttonValue="x" />
-            <FunctionButtons buttonValue="÷" />
+            <OperatorButtons buttonValue="+" />
+            <OperatorButtons buttonValue="-" />
+            <OperatorButtons buttonValue="x" />
+            <OperatorButtons buttonValue="÷" />
             <NumberButtons buttonValue="7" />
             <NumberButtons buttonValue="8" />
             <NumberButtons buttonValue="9" />
