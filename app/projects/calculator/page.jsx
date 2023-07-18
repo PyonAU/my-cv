@@ -1,6 +1,7 @@
 'use client';
 
 import Calculator from './calculator-components/Calculator';
+import NumberProvider from './calculator-components/NumberProvider';
 
 const CalculatorPage = () => {
   return (
@@ -16,7 +17,9 @@ const CalculatorPage = () => {
           }
         `}
       </style>
-      <Calculator />
+      <NumberProvider>
+        <Calculator />
+      </NumberProvider>
     </>
   );
 };
