@@ -1,0 +1,29 @@
+.calculatorDisplay {
+  background: rgb(125, 116, 126);
+  color: white;
+  margin: 0;
+  float: right;
+  width: 400px;
+  border-radius: 10px 10px 0 0;
+}
+
+.displayNumber {
+  margin: 0;
+  padding: 25px;
+  font-size: 45px;
+  font-family: 'Lucida Console', sans-serif;
+  font-weight: 100;
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.historyContainer {
+  float: left;
+  background: rgb(125, 116, 126);
+  color: white;
+  width: 50px;
+  padding-top: 70px;
+  border-radius: 10px 0 0 0;
+}

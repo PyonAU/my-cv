@@ -1,0 +1,22 @@
+.operator {
+  min-height: 50px;
+  font-weight: 100;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: rgb(236, 134, 228);
+  color: white;
+  font-size: 30px;
+}
+
+.operator:hover {
+  filter: brightness(110%);
+}
+
+.operator:active {
+  transform: translateY(1px);
+}
+
+.operator:focus {
+  outline: none;
+}

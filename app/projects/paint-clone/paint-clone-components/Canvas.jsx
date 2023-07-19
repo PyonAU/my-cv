@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import useWindowSize from './useWindowSize';
+import useWindowSize from '../../hooks/useWindowSize';
 
 function Canvas(props) {
   // State
