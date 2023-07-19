@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Paint from './paint-clone-components/Paint';
-import useWindowSize from '../paint-clone/paint-clone-components/useWindowSize';
+import useWindowSize from '../hooks/useWindowSize';
 import styles from './PaintClone.module.css';
 
 const PaintClonePage = () => {
