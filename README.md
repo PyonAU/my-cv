@@ -175,7 +175,6 @@ This is a basic calculator which has the ability to perform operations, and it c
 - Ability to enter multiple numbers with a scroll bar feature to ensure all numbers are visible.
 - Prevention of multiple decimal inputs for accuracy.
 - Inclusion of a history feature to track previous calculations.
-- Ensuring mobile responsiveness for optimal usability on mobile devices.
 
 <p align="right"><a href="#my-cv-app">back to top</a></p>
 
