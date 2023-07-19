@@ -13,9 +13,10 @@ const NumberProvider = ({ children }) => {
     secondValue: '',
     calculation: '',
   });
+  const [historyArray, setHistoryArray] = useState([]);
 
   // Destructuring
-  const { firstValue, operatorValue, secondValue, calculation } = history;
+  const { secondValue, calculation } = history;
 
   const handleDisplayValue = (num) => {
     if ((!number.includes('.') || num !== '.') && number.length < 8) {
@@ -31,7 +32,7 @@ const NumberProvider = ({ children }) => {
   const handleClearValue = () => {
     setNumber('');
     setStoredNumber('');
-    setFunctionType('');
+    setOperatorType('');
   };
 
   const handleBackButton = () => {
@@ -90,8 +91,23 @@ const NumberProvider = ({ children }) => {
     }
     const value = operation(+input.firstValue, +input.secondValue);
     setHistory({ ...input, calculation: value });
+    setHistoryArray((hist) =>
+      hist.length
+        ? [{ ...input, calculation: value }, ...hist]
+        : [{ ...input, calculation: value }]
+    );
     setStoredNumber(() => value);
     setNumber('');
+  };
+
+  const handleDeleteHistory = () => {
+    setHistory({
+      firstValue: '',
+      operatorValue: '',
+      secondValue: '',
+      calculation: '',
+    });
+    setHistoryArray([]);
   };
 
   return (
@@ -104,6 +120,8 @@ const NumberProvider = ({ children }) => {
         handleClearValue,
         handleBackButton,
         calculate,
+        historyArray,
+        handleDeleteHistory,
       }}
     >
       {children}

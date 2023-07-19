@@ -9,7 +9,7 @@ const Display = ({ handleHistory }) => {
   return (
     <div className={styles.calculatorDisplay}>
       <div className={styles.historyContainer} onClick={handleHistory}>
-        <IconButton title="history">
+        <IconButton title="History">
           <ManageHistory fontSize="small" style={{ color: 'white' }} />
         </IconButton>
       </div>
