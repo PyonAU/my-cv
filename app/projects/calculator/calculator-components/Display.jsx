@@ -4,11 +4,11 @@ import { IconButton } from '@mui/material';
 import { ManageHistory } from '@mui/icons-material';
 import styles from './Display.module.css';
 
-const Display = () => {
+const Display = ({ handleHistory }) => {
   const { number, storedNumber } = useContext(NumberContext);
   return (
     <div className={styles.calculatorDisplay}>
-      <div className={styles.historyContainer}>
+      <div className={styles.historyContainer} onClick={handleHistory}>
         <IconButton title="history">
           <ManageHistory fontSize="small" style={{ color: 'white' }} />
         </IconButton>
