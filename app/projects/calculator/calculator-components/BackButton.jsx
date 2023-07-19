@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { NumberContext } from './NumberProvider';
-import Backspace from '@mui/icons-material/DeleteForever';
+import BackspaceIcon from '@mui/icons-material/Backspace';
 import styles from './BackButton.module.css';
 
 const BackButton = () => {
@@ -9,10 +9,11 @@ const BackButton = () => {
   return (
     <button
       type="button"
+      title="Backspace"
       className={styles.backButton}
       onClick={handleBackButton}
     >
-      <Backspace title="Go Back" fontSize="medium" style={{ color: 'white' }} />
+      <BackspaceIcon fontSize="medium" style={{ color: 'white' }} />
     </button>
   );
 };
