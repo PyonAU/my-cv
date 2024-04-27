@@ -1,0 +1,10 @@
+.container {
+  margin-top: 100px;
+}
+
+.mainTitle {
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px black;
+}
