@@ -87,7 +87,7 @@ const Modal = () => {
   }, [inputData]);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       {/* Open Modal */}
       <h1 className={styles.addBookmark} onClick={() => setIsAdding(true)}>
         Add Bookmark

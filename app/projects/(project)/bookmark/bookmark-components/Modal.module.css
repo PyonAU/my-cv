@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
+.wrapper {
+  margin-top: 95px;
+}
+
 .addBookmark {
   padding: 20px;
   background-color: rgba(33, 4, 66, 0.8);
