@@ -95,7 +95,7 @@
 }
 
 /* Media Query: Laptop */
-@media screen and (max-width: 1800px) {
+@media screen and (max-width: 2000px) {
   .selectionContainer {
     top: 0px;
   }
@@ -116,7 +116,7 @@
   }
 
   .selectionFooter {
-    top: 30px;
+    top: -3px;
     height: 80px;
   }
 
@@ -146,5 +146,4 @@
   .selectionFooter {
     top: 123px;
   }
-
 }
