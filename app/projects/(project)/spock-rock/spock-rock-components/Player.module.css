@@ -33,6 +33,13 @@
   color: black !important;
 }
 
+/* Media Query: smaller laptop */
+@media screen and (max-width: 2000px) {
+  .playerContainer {
+    margin: 35px;
+  }
+}
+
 /* Media Query: iPhone (Vertical) */
 @media screen and (max-width: 376px) {
   .playerContainer {
