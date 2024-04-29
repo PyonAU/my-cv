@@ -32,7 +32,7 @@ Table of Contents
 
 This application aims to consolidate all the projects I have built using Next.js, specifically leveraging the latest version, Next.js 13, in order to showcase my portfolio and enhance my skills and knowledge.
 
-While initially considering TypeScript for this application, I opted for regular JavaScript instead as an MVP. Since I was still in the process of learning and eager to create something promptly, I chose to utilize JavaScript to develop this project however I am actively working on adding more projects and planning to use TypeScript post MVP.
+While initially considering TypeScript for this application, I opted for regular JavaScript instead as a MVP. Since I was still in the process of learning and eager to create something promptly, I chose to utilize JavaScript to develop this project however I am actively working on adding more projects and planning to use TypeScript post MVP.
 
 I am highly motivated to acquire new skills, expand my knowledge, and continue augmenting this application with additional projects in the future.
 
@@ -248,8 +248,7 @@ This is a custom video player. When hovering near the bottom, the control bar ap
 
 # Roadmap
 
-- [x] Add project list page
-- [ ] Add projects to application in JavaScript
+- [x] Add projects to application in JavaScript
   - [x] Bookmark App
   - [x] Math Sprint Game
   - [x] Spock Rock Game
@@ -258,7 +257,7 @@ This is a custom video player. When hovering near the bottom, the control bar ap
   - [x] Drag and Drop App
   - [x] Joke Teller App
   - [x] Video Player App
-  - [ ] Calculator
+  - [x] Calculator
 - [ ] Add testing files to all my projects
   - [ ] Bookmark App
   - [ ] Math Sprint Game

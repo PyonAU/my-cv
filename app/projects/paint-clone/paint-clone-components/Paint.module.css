@@ -1,9 +1,0 @@
-.topBar {
-  padding-left: 15px;
-  height: 60px;
-  width: 100%;
-  position: fixed;
-  background-color: grey;
-  display: flex;
-  justify-content: center;
-}

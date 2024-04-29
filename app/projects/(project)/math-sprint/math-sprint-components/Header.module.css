@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium&display=swap');
+
+.header {
+  background: var(--baseColor);
+  color: white;
+  font-family: Oxanium, sans-serif;
+  font-size: 24px;
+  text-shadow: 1px 2px 2px black;
+  letter-spacing: 2px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media Query: Laptop */
+@media screen and (max-width: 2000px) {
+  .header {
+    font-size: 19px;
+    height: 60px;
+  }
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 500px) {
+  .header {
+    font-size: 12px;
+  }
+}

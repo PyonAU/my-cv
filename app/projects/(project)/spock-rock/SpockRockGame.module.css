@@ -1,0 +1,29 @@
+.outerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.gameContainer {
+  width: 539px;
+  height: 600px;
+  background: rgb(255, 242, 243);
+  border-radius: 5px;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Media Query: smaller laptop */
+@media screen and (max-width: 2000px) {
+  .gameContainer {
+    width: 515px;
+    height: 475px;
+  }
+}
+
+/* Media Query: iPhone (Vertical) */
+@media screen and (max-width: 376px) {
+  .gameContainer {
+    height: 550px;
+  }
+}
