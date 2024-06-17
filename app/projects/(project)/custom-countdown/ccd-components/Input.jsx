@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import HelpButton from '../../../../../components/HelpButton';
+import { ccdInfo, ccdInstructions } from '../../../lib/gameInfo';
 import styles from './Input.module.css';
 
 // Set Date Input Min with Today's Date so that a user cannot select past dates
@@ -106,7 +108,16 @@ const Input = () => {
           className={styles.inputContainer}
           hidden={userInput.date !== '' ? true : false}
         >
-          <h1 className={styles.mainTitle}>Create a Custom Countdown!</h1>
+          <div className={styles.titleContainer}>
+            <h1 className={styles.mainTitle}>Create a Custom Countdown!</h1>
+            <HelpButton
+              infoText={ccdInfo}
+              instructions={ccdInstructions}
+              orderedList={true}
+              autoHeight={true}
+            />
+          </div>
+
           <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.labels} htmlFor="title">
               Title
