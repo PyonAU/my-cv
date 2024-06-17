@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import HelpButton from '../../../../../components/HelpButton';
+import { bookmarkInfo, bookmarkInstructions } from '../../../lib/gameInfo';
 import Bookmarks from './Bookmarks';
 import styles from './Modal.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -89,9 +91,17 @@ const Modal = () => {
   return (
     <div className={styles.wrapper}>
       {/* Open Modal */}
-      <h1 className={styles.addBookmark} onClick={() => setIsAdding(true)}>
-        Add Bookmark
-      </h1>
+      <div className={styles.openModalContainer}>
+        <h1 className={styles.addBookmark} onClick={() => setIsAdding(true)}>
+          Add Bookmark
+        </h1>
+        <HelpButton
+          infoText={bookmarkInfo}
+          instructions={bookmarkInstructions}
+          orderedList={true}
+          autoHeight={true}
+        />
+      </div>
 
       <Bookmarks inputData={inputData} handleDelete={handleDelete} />
 

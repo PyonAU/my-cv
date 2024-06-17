@@ -1,9 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import MainComponent from './dnd-components/MainComponent';
+import HelpButton from '../../../../components/HelpButton';
 import styles from './dragAndDrop.module.css';
+import { dragAndDropInfo, dragAndDropInstructions } from '../../lib/gameInfo';
 
 const DragAndDropPage = () => {
   return (
@@ -35,7 +38,16 @@ const DragAndDropPage = () => {
         `}
       </style>
       <div className={styles.container}>
-        <h1 className={styles.mainTitle}>Kanban Board</h1>
+        <div className={styles.helpContainer}>
+          <h1 className={styles.mainTitle}>Kanban Board</h1>
+          <HelpButton
+            infoText={dragAndDropInfo}
+            instructions={dragAndDropInstructions}
+            orderedList={false}
+            autoHeight={true}
+          />
+        </div>
+
         <DndProvider backend={HTML5Backend}>
           <MainComponent />
         </DndProvider>

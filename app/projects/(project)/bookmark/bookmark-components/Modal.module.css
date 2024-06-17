@@ -4,16 +4,20 @@
   margin-top: 95px;
 }
 
-.addBookmark {
-  padding: 20px;
+.openModalContainer {
+  padding: 10px 10px 10px 20px;
   background-color: rgba(33, 4, 66, 0.8);
   border-radius: 5px;
   cursor: pointer;
-  text-align: center;
-  text-transform: uppercase;
-  width: 275px;
+  width: 320px;
   margin: 20px auto 10px;
   user-select: none;
+  display: flex;
+}
+
+.addBookmark {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .addBookmark:hover {
